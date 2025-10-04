@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ParallaxCard } from "./parallax-card";
 
 const services = [
   {
@@ -18,68 +17,65 @@ const services = [
     imageId: "service-ui-ux"
   },
   {
-    id: "web-dev",
-    title: "WEB DEVELOPMENT",
+    id: "graphic-design",
+    title: "GRAPHIC DESIGN",
+    description: "Creating visually stunning assets for digital and print. This includes marketing materials, social media content, and illustrations that align with your brand's message.",
+    imageId: "service-branding"
+  },
+  {
+    id: "web-design",
+    title: "WEB DESIGN",
     description: "Building responsive, high-performance websites and web applications using modern technologies like React, Next.js, and TypeScript. I write clean, efficient, and scalable code.",
     imageId: "service-web-dev"
   },
   {
-    id: "branding",
-    title: "BRANDING & IDENTITY",
-    description: "Creating a strong brand identity that resonates with your target audience. This includes logo design, color palettes, and typography guidelines to ensure a cohesive and memorable brand presence.",
-    imageId: "service-branding"
+      id: "branding",
+      title: "BRANDING",
+      description: "Creating a strong brand identity that resonates with your target audience. This includes logo design, color palettes, and typography guidelines to ensure a cohesive and memorable brand presence.",
+      imageId: "service-branding"
   }
 ];
 
 export function ServicesSection() {
-  const [activeServiceImage, setActiveServiceImage] = useState(services[0].imageId);
-  const activeImage = PlaceHolderImages.find(p => p.id === activeServiceImage);
-
+    const activeImage = PlaceHolderImages.find(p => p.id === "service-web-dev");
   return (
-    <section id="services" className="bg-card">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The strategy behind exceptional results</h2>
+    <section id="services" className="container mx-auto px-4">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl mx-auto">
+            <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-4">
+                    <h2 className="text-5xl md:text-6xl font-black uppercase tracking-tighter">What I can do for you</h2>
+                    <p className="text-lg text-muted-foreground max-w-lg">
+                        As a digital designer, I am a visual storyteller, crafting experiences that connect deeply and spark creativity.
+                    </p>
+                </div>
+                 <Accordion
+                    type="single"
+                    collapsible
+                    className="w-full"
+                    defaultValue="ui-ux"
+                >
+                    {services.map((service, index) => (
+                    <AccordionItem value={service.id} key={service.id} className="border-border/50">
+                        <AccordionTrigger className="text-xl font-bold hover:no-underline text-left py-6">
+                        <span className="text-foreground/50 mr-4">0{index+1}</span>{service.title}
+                        </AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground text-base pb-6 pl-[42px]">
+                        {service.description}
+                        </AccordionContent>
+                    </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
+             <div className="relative w-full aspect-[4/5]">
+                {activeImage && (
+                    <ParallaxCard 
+                        src={activeImage.imageUrl}
+                        alt={activeImage.description}
+                        imageHint={activeImage.imageHint}
+                    />
+                )}
+            </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
-          <Accordion
-            type="single"
-            collapsible
-            className="w-full"
-            defaultValue="ui-ux"
-            onValueChange={(value) => {
-              if (value) {
-                const service = services.find(s => s.id === value);
-                if (service) setActiveServiceImage(service.imageId);
-              }
-            }}
-          >
-            {services.map((service, index) => (
-              <AccordionItem value={service.id} key={service.id} className="border-border">
-                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-6">
-                  <span className="text-primary mr-4">0{index+1}</span>{service.title}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base pb-6 pl-[42px]">
-                  {service.description}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg">
-            {activeImage && (
-              <Image
-                src={activeImage.imageUrl}
-                alt={activeImage.description}
-                fill
-                className="object-cover transition-opacity duration-500 ease-in-out"
-                data-ai-hint={activeImage.imageHint}
-                key={activeImage.id}
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
