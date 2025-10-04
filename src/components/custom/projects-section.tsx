@@ -42,16 +42,24 @@ const projects = [
     }
 ];
 
-function ProjectCard({ project, index, scrollYProgress }: { project: any, index: number, scrollYProgress: any }) {
+function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
-    const scale = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [1, 0.9]);
-    const translateY = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [0, -40]);
-    const opacity = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [1, 0]);
+    
+    // Each card's animation will be triggered within its own segment of the scroll progress.
+    const start = index / totalProjects;
+    const end = start + (1 / totalProjects);
+    
+    const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
+    const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
 
     return (
         <motion.div
-            style={{ scale, translateY, opacity }}
-            className="sticky top-28"
+            style={{ 
+                scale: index === 0 ? 1 : scale, 
+                opacity: index === 0 ? 1 : opacity,
+                top: `${index * 2}rem`
+            }}
+            className="sticky"
         >
             <div className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-card border border-border/50 p-1">
                 {image && (
@@ -111,20 +119,21 @@ export function ProjectsSection() {
     }, []);
 
     return (
-        <section id="projects" ref={ref} className={cn("bg-card transition-all duration-1000 ease-out", inView ? "opacity-100" : "opacity-0")}>
+        <section id="projects" className={cn("bg-card transition-all duration-1000 ease-out", inView ? "opacity-100" : "opacity-0")}>
             <div className="container mx-auto px-4 py-20 sm:py-28 md:py-32">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
-                <div ref={ref} className="max-w-xl mx-auto" style={{ height: `${projects.length * 100}vh` }}>
-                    <div className="sticky top-28">
+                <div ref={ref} className="max-w-xl mx-auto relative" style={{ height: `${projects.length * 50}vh` }}>
+                    <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}
                                 project={project}
                                 index={index}
                                 scrollYProgress={scrollYProgress}
+                                totalProjects={projects.length}
                             />
                         ))}
                     </div>
