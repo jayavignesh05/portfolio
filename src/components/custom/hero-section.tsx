@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -6,6 +5,7 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { TypewriterEffect } from "./typewriter-effect";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -46,12 +46,8 @@ export function HeroSection() {
             Dedicated to top-notch design, I am a
         </p>
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
-          <span className={cn("block transition-all duration-700 ease-out", isMounted ? "translate-y-0 opacity-100" : "translate-y-full opacity-0")}>
-            UI/UX <span className="text-primary">Designer</span> &amp;
-          </span>
-          <span className={cn("block transition-all duration-700 ease-out delay-200", isMounted ? "translate-y-0 opacity-100" : "translate-y-full opacity-0")}>
-            Frontend <span className="text-primary">Developer</span>
-          </span>
+          <TypewriterEffect isMounted={isMounted} text="UI/UX Designer" coloredText="Designer" />
+          <TypewriterEffect isMounted={isMounted} text="& Frontend Developer" coloredText="Developer" baseDelay={1500} />
         </h1>
         <p className={cn(
             "mt-6 text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 ease-out delay-300",
