@@ -22,6 +22,7 @@ export function Header() {
   }, []);
 
   const menuLinks = [
+    { name: "Home", href: "#home" },
     { name: "Work", href: "#projects" },
     { name: "Process", href: "#services" },
     { name: "About Me", href: "#about" },
