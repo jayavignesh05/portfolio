@@ -86,7 +86,7 @@ export function ServicesSection() {
 
     return (
         <section id="services" ref={ref} className={cn("transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-0">
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl mx-auto justify-between">
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4">
