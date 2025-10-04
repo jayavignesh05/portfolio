@@ -38,7 +38,7 @@ export function ProfileCard() {
                 </span>
                 <span className="text-sm text-muted-foreground">Available for work</span>
             </div>
-            <h2 className="text-3xl font-bold mb-1">Alex Doe</h2>
+            <h2 className="text-3xl font-bold mb-1">Jayavignesh</h2>
             <p className="text-muted-foreground mb-6">UI/UX Interaction Designer Based in Berlin.</p>
             
             <div className="flex justify-center gap-4 mb-6">
