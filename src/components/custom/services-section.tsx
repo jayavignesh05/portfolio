@@ -40,7 +40,6 @@ export function ServicesSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The strategy behind exceptional results</h2>
-          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">My range of services to bring your ideas to life with precision and creativity.</p>
         </div>
         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
           <Accordion
