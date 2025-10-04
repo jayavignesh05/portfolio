@@ -24,7 +24,6 @@ export function Header() {
   const menuLinks = [
     { name: "Work", href: "#projects" },
     { name: "Process", href: "#services" },
-    { name: "Testimonials", href: "#testimonials" },
     { name: "About Me", href: "#about" },
   ];
 
