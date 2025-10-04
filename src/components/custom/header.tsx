@@ -63,8 +63,7 @@ export function Header() {
           
           <Button asChild className="font-bold text-base rounded-full" size="lg">
             <Link href="#contact" className="flex items-center gap-2">
-              <span>Book a Call</span>
-              <ArrowRight />
+              <span>Contact</span>
             </Link>
           </Button>
         </div>

@@ -62,7 +62,7 @@ export function HeroSection() {
             "text-primary p-0 mt-8 h-auto font-semibold text-lg transition-all duration-700 ease-out delay-500",
             isMounted ? "opacity-100" : "opacity-0"
         )}>
-          <Link href="#contact">Book a Discovery Call <ArrowRight className="ml-2 h-5 w-5" /></Link>
+          <Link href="#contact">Contact Me<ArrowRight className="ml-2 h-5 w-5" /></Link>
         </Button>
       </div>
     </section>
