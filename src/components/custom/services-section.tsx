@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -85,12 +86,12 @@ export function ServicesSection() {
     const activeImage = PlaceHolderImages.find(p => p.id === activeImageId);
 
     return (
-        <section id="services" ref={ref} className={cn("transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
+        <section id="services" ref={ref} className={cn("transition-all duration-1000 ease-out py-16 sm:py-20 md:py-24", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl mx-auto justify-between">
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4">
-                            <h2 className="text-5xl md:text-5xl font-black uppercase tracking-tighter">The <span className="text-primary">strategy</span> behind exceptional results</h2>
+                            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter">The <span className="text-primary">strategy</span> behind exceptional results</h2>
                             <p className="text-lg text-muted-foreground max-w-lg">
                                 As a digital designer, I am a visual storyteller, crafting experiences that connect deeply and spark creativity.
                             </p>
