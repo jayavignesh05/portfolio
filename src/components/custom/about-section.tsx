@@ -63,8 +63,9 @@ export function AboutSection() {
                 </div>
                 <div className="lg:col-span-2 space-y-10">
                     <div>
+                        <h2 className="text-3xl font-bold mb-4">About Me</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            I&apos;m a passionate Web Designer & Developer. I blend creative design with precise technical execution to deliver outstanding digital experiences.
+                          Hello! I'm Alex, a passionate UI/UX Interaction Designer and Frontend Developer based in Berlin. With over a decade of experience, I specialize in creating beautiful, functional, and user-centered digital experiences. I thrive on blending creative design with precise technical execution to build products that not only look great but are also intuitive and a joy to use. From startups to established brands, I've had the pleasure of collaborating with a diverse range of clients to bring their visions to life. When I'm not designing or coding, you can find me exploring new technologies or seeking inspiration in the world around me.
                         </p>
                     </div>
                     <Separator className="border-dashed" />
