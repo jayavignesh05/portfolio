@@ -45,22 +45,21 @@ const projects = [
 function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
     
-    // Each card's animation will be triggered within its own segment of the scroll progress.
     const start = index / totalProjects;
     const end = start + (1 / totalProjects);
     
-    const scale = useTransform(scrollYProgress, [start, end], [1, 0.9]);
+    const scale = useTransform(scrollYProgress, [start, end], [1, 0.8]);
     const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
 
     return (
         <motion.div
             style={{ 
-                scale: index === (totalProjects - 1) ? 1 : scale,
-                top: `${index * 2}rem`
+                scale: scale,
+                top: `calc(1rem * ${index})`
             }}
             className="sticky"
         >
-            <div className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-card border border-border/50 p-1">
+            <div className="group relative aspect-[16/9] rounded-xl overflow-hidden bg-card border border-border/50 p-1">
                 {image && (
                     <Image
                         src={image.imageUrl}
@@ -102,7 +101,7 @@ export function ProjectsSection() {
                 }
             },
             {
-                threshold: 0.1,
+                threshold: 0.01,
             }
         );
 
@@ -125,7 +124,7 @@ export function ProjectsSection() {
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
-                <div ref={ref} className="max-w-xl mx-auto relative" style={{ height: `${projects.length * 50}vh` }}>
+                <div ref={ref} className="max-w-4xl mx-auto relative" style={{ height: `${projects.length * 100}vh` }}>
                     <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard

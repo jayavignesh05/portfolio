@@ -49,13 +49,14 @@ export function TestimonialsSection() {
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        const currentRef = ref.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -68,7 +69,7 @@ export function TestimonialsSection() {
           I'm proud to have collaborated with some amazing clients.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {testimonials.map((testimonial, index) => {
           const image = PlaceHolderImages.find(p => p.id === testimonial.imageId);
           return (

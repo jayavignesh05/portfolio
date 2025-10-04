@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight } from 'lucide-react';
 
 export function Header() {
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
@@ -25,7 +24,7 @@ export function Header() {
   const menuLinks = [
     { name: "Work", href: "#projects" },
     { name: "Process", href: "#services" },
-    { name: "FAQs", href: "#testimonials" },
+    { name: "Testimonials", href: "#testimonials" },
     { name: "About Me", href: "#about" },
   ];
 
@@ -37,7 +36,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-4xl ",
+          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl ",
           isScrolled && "mt-2"
         )}
       >
@@ -49,7 +48,7 @@ export function Header() {
               </Avatar>
             </Link>
 
-          <nav className="hidden md:flex items-center gap-14">
+          <nav className="hidden md:flex items-center gap-10">
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
