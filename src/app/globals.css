@@ -83,7 +83,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    cursor: none;
   }
   section {
     @apply w-full py-20 sm:py-28 md:py-32;

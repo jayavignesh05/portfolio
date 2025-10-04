@@ -3,7 +3,6 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/custom/header";
 import { Footer } from "@/components/custom/footer";
-import { CustomCursor } from "@/components/custom/custom-cursor";
 
 export const metadata: Metadata = {
   title: 'VisioFolio',
@@ -23,7 +22,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <CustomCursor />
         <Header />
         <main>{children}</main>
         <Footer />
