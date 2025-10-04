@@ -2,13 +2,6 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
@@ -16,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const projects = [
     {
@@ -48,8 +42,48 @@ const projects = [
     }
 ];
 
+function ProjectCard({ project, index, scrollYProgress }: { project: any, index: number, scrollYProgress: any }) {
+    const image = PlaceHolderImages.find(p => p.id === project.imageId);
+    const scale = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [1, 0.9]);
+    const translateY = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [0, -40]);
+    const opacity = useTransform(scrollYProgress, [index * 0.25, 0.1 + index * 0.25], [1, 0]);
+
+    return (
+        <motion.div
+            style={{ scale, translateY, opacity }}
+            className="sticky top-28"
+        >
+            <div className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-card border border-border/50 p-1">
+                {image && (
+                    <Image
+                        src={image.imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
+                        data-ai-hint={image.imageHint}
+                    />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 text-white w-full">
+                    <Badge variant="secondary" className="mb-2 bg-primary/20 text-primary border-none">{project.category}</Badge>
+                    <h3 className="text-2xl font-bold">{project.title}</h3>
+                    <p className="text-white/80 mt-1 line-clamp-2">{project.description}</p>
+                    <Button asChild variant="link" className="text-primary p-0 mt-4 h-auto font-semibold">
+                        <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    </Button>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
 export function ProjectsSection() {
     const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end end"]
+    });
+
     const [inView, setInView] = useState(false);
 
     useEffect(() => {
@@ -76,55 +110,26 @@ export function ProjectsSection() {
         };
     }, []);
 
-  return (
-    <section id="projects" ref={ref} className={cn("bg-card transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-      <div className="container mx-auto px-4 py-20 sm:py-28 md:py-32">
-        <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
-            <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A selection of my work that showcases my skills and creativity.</p>
-        </div>
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent>
-            {projects.map((project) => {
-              const image = PlaceHolderImages.find(p => p.id === project.imageId);
-              return (
-                <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <div className="group relative aspect-[4/3] rounded-xl overflow-hidden">
-                        {image && (
-                            <Image
-                                src={image.imageUrl}
-                                alt={project.title}
-                                fill
-                                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                data-ai-hint={image.imageHint}
+    return (
+        <section id="projects" ref={ref} className={cn("bg-card transition-all duration-1000 ease-out", inView ? "opacity-100" : "opacity-0")}>
+            <div className="container mx-auto px-4 py-20 sm:py-28 md:py-32">
+                <div className="text-center mb-16 max-w-2xl mx-auto">
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
+                    <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
+                </div>
+                <div ref={ref} className="max-w-xl mx-auto" style={{ height: `${projects.length * 100}vh` }}>
+                    <div className="sticky top-28">
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                index={index}
+                                scrollYProgress={scrollYProgress}
                             />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-6 text-white w-full">
-                            <Badge variant="secondary" className="mb-2 bg-primary/20 text-primary border-none">{project.category}</Badge>
-                            <h3 className="text-2xl font-bold">{project.title}</h3>
-                            <p className="text-white/80 mt-1 line-clamp-2">{project.description}</p>
-                            <Button asChild variant="link" className="text-primary p-0 mt-4 h-auto font-semibold">
-                                <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                            </Button>
-                        </div>
+                        ))}
                     </div>
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
-        </Carousel>
-      </div>
-    </section>
-  );
+                </div>
+            </div>
+        </section>
+    );
 }
