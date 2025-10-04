@@ -27,7 +27,7 @@ const services = [
   },
   {
     id: "web-design",
-    title: "WEB DESIGN",
+    title: "Kickstart Development",
     description: "Building responsive, high-performance websites and web applications using modern technologies like React, Next.js, and TypeScript. I write clean, efficient, and scalable code.",
     imageId: "service-web-dev"
   },
@@ -74,7 +74,7 @@ export function ServicesSection() {
                     ))}
                 </Accordion>
             </div>
-             <div className="relative w-full aspect-[4/5] mx-auto">
+             <div className="relative w-full aspect-[4/5] max-w-sm mx-auto">
                 {activeImage && (
                     <ParallaxCard 
                         src={activeImage.imageUrl}
