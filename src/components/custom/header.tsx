@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -24,7 +25,7 @@ export function Header() {
   const menuLinks = [
     { name: "Home", href: "#home" },
     { name: "Process", href: "#services" },
-    { name: "About Me", href: "#about" },
+    { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
   ];
 
