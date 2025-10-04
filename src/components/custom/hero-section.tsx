@@ -1,30 +1,22 @@
-import { ParallaxCard } from "./parallax-card";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
-  const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
 
   return (
     <section id="home" className="container mx-auto px-4 min-h-screen flex items-center justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16 w-full max-w-6xl">
-        <div className="text-center md:text-left">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter">
-            UI/UX Designer & Frontend Developer
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">
-            I craft beautiful and functional digital experiences. Let's build something amazing together.
-          </p>
-        </div>
-
-        <div className="relative aspect-[3/4] w-full max-w-[300px] sm:max-w-xs mx-auto">
-          {developerImage && (
-            <ParallaxCard
-              src={developerImage.imageUrl}
-              alt={developerImage.description}
-              imageHint={developerImage.imageHint}
-            />
-          )}
-        </div>
+      <div className="w-full text-center">
+        <p className="text-lg text-muted-foreground">Dedicated to top-notch design, I am a</p>
+        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-foreground tracking-tighter mt-4">
+          Graphic &amp; Visual <br /> Identity <span className="font-black">Designer</span>
+        </h1>
+        <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+          with a multidisciplinary approach for start-ups and small brand-conscious companies.
+        </p>
+        <Button asChild variant="link" className="text-primary p-0 mt-8 h-auto font-semibold text-lg">
+          <Link href="#contact">Book a Discovery Call <ArrowRight className="ml-2 h-5 w-5" /></Link>
+        </Button>
       </div>
     </section>
   );
