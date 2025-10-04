@@ -64,12 +64,12 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
             }}
             className="absolute top-0 left-0 w-full h-full"
         >
-            <div className="flex h-full w-full items-center justify-center">
-                <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
+            <div className="flex h-100 w-full items-center justify-center  ">
+                <div className="group relative w-full max-w-5xl aspect-[13/8] rounded-2xl overflow-hidden bg-card border border-border/50 ">
                     {image && (
                         <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent " />
                     <div className="absolute bottom-0 left-0 p-8 text-white w-full">
                         <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
                         <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
