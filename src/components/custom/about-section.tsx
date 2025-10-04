@@ -9,8 +9,8 @@ import { Separator } from "../ui/separator";
 import { AnimatedStat } from "./animated-stat";
 
 const skills = [
-    "Product Design", "UX Design", "UI Design", "Framer",
-    "Interaction Design", "Branding", "Webflow", "UX Research", "No-Code"
+    "React JS", "UI Design", "UX Design", "Figma",
+    "Interaction Design", "Webflow"
 ];
 
 const stats = [
