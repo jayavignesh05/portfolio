@@ -9,12 +9,12 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -37,8 +37,8 @@ export function Header() {
     >
       <div
         className={cn(
-          "mx-auto mt-4 px-6 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-4xl",
-          isScrolled ? "h-16" : "h-20"
+          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-4xl ",
+          isScrolled && "mt-2"
         )}
       >
         <div className="flex items-center justify-between h-full">

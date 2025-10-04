@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/custom/header";
 import { Footer } from "@/components/custom/footer";
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'VisioFolio',
@@ -21,7 +22,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased">
+      <body className={cn("font-body antialiased", "content-blur")}>
         <Header />
         <main>{children}</main>
         <Footer />

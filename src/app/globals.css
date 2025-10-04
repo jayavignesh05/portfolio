@@ -97,4 +97,22 @@
   .transform-style-3d {
     transform-style: preserve-3d;
   }
+  
+  .content-blur {
+    @apply relative;
+  }
+  
+  .content-blur::before,
+  .content-blur::after {
+    content: "";
+    @apply fixed left-0 w-full h-28 z-40 pointer-events-none;
+  }
+  
+  .content-blur::before {
+    @apply top-0 bg-gradient-to-b from-background to-transparent;
+  }
+  
+  .content-blur::after {
+    @apply bottom-0 bg-gradient-to-t from-background to-transparent;
+  }
 }
