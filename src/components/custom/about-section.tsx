@@ -57,30 +57,31 @@ export function AboutSection() {
 
     return (
         <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 max-w-7xl mx-auto items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 max-w-7xl mx-auto items-start">
                 <div className="lg:col-span-1">
                     <ProfileCard />
                 </div>
-                <div className="lg:col-span-2 space-y-8">
+                <div className="lg:col-span-2 space-y-10">
                     <div>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             I&apos;m a passionate Web Designer & Developer. I blend creative design with precise technical execution to deliver outstanding digital experiences.
                         </p>
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-4">
                         {skills.map((skill) => (
-                            <Badge key={skill} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground font-normal px-4 py-2 text-sm rounded-lg">
+                            <Badge key={skill} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground font-normal px-4 py-2 text-base rounded-lg">
                                 {skill}
                             </Badge>
                         ))}
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                         {stats.map((stat, index) => (
                             <div key={index} className="bg-card p-6 rounded-lg border border-border/50">
-                                <div className="text-4xl font-black text-primary">{stat.value}</div>
-                                <div className="text-muted-foreground mt-2">{stat.label}</div>
+                                <div className="text-5xl font-black text-primary">{stat.value}</div>
+
+                                <div className="text-muted-foreground mt-3 text-base">{stat.label}</div>
                             </div>
                         ))}
                     </div>
