@@ -24,9 +24,6 @@ export function HeroSection() {
               imageHint={developerImage.imageHint}
             />
           )}
-          <div className="absolute -top-8 -right-8 text-primary flex items-center gap-2 animate-wave" style={{ animationDelay: '1s' }}>
-             <span className="text-4xl" role="img" aria-label="Waving hand">👋</span>
-          </div>
         </div>
       </div>
     </section>
