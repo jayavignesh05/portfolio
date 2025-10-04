@@ -49,12 +49,12 @@ export function Header() {
               </Avatar>
             </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-14">
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-semibold text-sm"
+                className="text-foreground/80 hover:text-primary transition-colors font-semibold text-base"
               >
                 {link.name}
               </Link>
