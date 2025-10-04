@@ -9,6 +9,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
     {
@@ -41,7 +43,7 @@ const projects = [
     },
 ];
 
-function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
+function DesktopProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
 
     const entranceRangeStart = (index - 1) / totalProjects;
@@ -64,25 +66,33 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
             }}
             className="absolute top-0 left-0 w-full h-full"
         >
-            <div className="flex h-100 w-full items-center justify-center  ">
-                <div className="group relative w-full max-w-5xl aspect-[13/8] rounded-2xl overflow-hidden bg-card border border-border/50 ">
-                    {image && (
-                        <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent " />
-                    <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                        <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
-                        <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
-                        <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
-                        <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
-                            <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                        </Button>
-                    </div>
-                </div>
+            <div className="flex h-full w-full items-center justify-center">
+                 <ProjectCardContent project={project} />
             </div>
         </motion.div>
     );
 }
+
+function ProjectCardContent({ project }: { project: any }) {
+    const image = PlaceHolderImages.find(p => p.id === project.imageId);
+    return (
+        <div className="group relative w-full max-w-5xl aspect-[13/8] rounded-2xl overflow-hidden bg-card border border-border/50 ">
+            {image && (
+                <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent " />
+            <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
+                <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
+                <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
+                <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
+                    <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </div>
+        </div>
+    )
+}
+
 
 export function ProjectsSection() {
     const ref = useRef<HTMLDivElement>(null);
@@ -90,6 +100,7 @@ export function ProjectsSection() {
         target: ref,
         offset: ["start start", "end end"]
     });
+    const isMobile = useIsMobile();
 
     const smoothScrollYProgress = useSpring(scrollYProgress, {
         mass: 0.1,
@@ -105,23 +116,38 @@ export function ProjectsSection() {
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-                    <div
-                        className="sticky top-28 h-screen overflow-hidden"
-                        style={{ perspective: '1000px' }}
-                    >
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                index={index}
-                                scrollYProgress={smoothScrollYProgress}
-                                totalProjects={projects.length}
-                            />
-                        ))}
+                {isMobile ? (
+                     <Carousel opts={{ align: "start", loop: true, }}>
+                        <CarouselContent>
+                            {projects.map((project) => (
+                                <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
+                                    <div className="p-1">
+                                        <ProjectCardContent project={project} />
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                    </Carousel>
+                ) : (
+                    <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
+                        <div
+                            className="sticky top-28 h-screen overflow-hidden"
+                            style={{ perspective: '1000px' }}
+                        >
+                            {projects.map((project, index) => (
+                                <DesktopProjectCard
+                                    key={project.id}
+                                    project={project}
+                                    index={index}
+                                    scrollYProgress={smoothScrollYProgress}
+                                    totalProjects={projects.length}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </section>
     );
 }
+
