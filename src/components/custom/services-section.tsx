@@ -18,7 +18,7 @@ const services = [
     id: "get-in-touch",
     title: "LET'S GET IN TOUCH",
     description: "Have a project in mind or just want to say hi? I'd love to hear from you. Click the button below to send me a message.",
-    imageId: "service-ui-ux"
+    imageId: "developer-photo"
   },
   {
     id: "graphic-design",
@@ -40,8 +40,22 @@ const services = [
   }
 ];
 
+const DEFAULT_IMAGE_ID = "service-ui-ux";
+
 export function ServicesSection() {
-    const [activeServiceId, setActiveServiceId] = useState("service-ui-ux");
+    const [activeServiceId, setActiveServiceId] = useState(DEFAULT_IMAGE_ID);
+    
+    const handleValueChange = (value: string) => {
+        if (value) {
+            const service = services.find(s => s.id === value);
+            if (service) {
+                setActiveServiceId(service.imageId);
+            }
+        } else {
+            setActiveServiceId(DEFAULT_IMAGE_ID);
+        }
+    };
+    
     const activeImage = PlaceHolderImages.find(p => p.id === activeServiceId);
 
   return (
@@ -58,7 +72,7 @@ export function ServicesSection() {
                     type="single"
                     collapsible
                     className="w-full"
-                    onValueChange={(value) => setActiveServiceId(services.find(s => s.id === value)?.imageId || "service-ui-ux")}
+                    onValueChange={handleValueChange}
                 >
                     {services.map((service, index) => (
                     <AccordionItem value={service.id} key={service.id} className="border-border/50">
