@@ -99,7 +99,7 @@ export function ProjectsSection() {
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
+                <div ref={ref} className="relative" style={{ height: `${projects.length * 80}vh` }}>
                     <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
