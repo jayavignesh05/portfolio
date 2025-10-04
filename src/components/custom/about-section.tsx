@@ -70,18 +70,18 @@ export function AboutSection() {
         <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
             <div className="text-center mb-16 max-w-4xl mx-auto">
                 <h2 className="text-5xl md:text-6xl font-black tracking-tight uppercase">About Me</h2>
-                <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
                     Hi, I&apos;m a digital designer and developer passionate about crafting meaningful and impactful digital experiences.
                 </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {stats.map((stat, index) => (
                     <AnimatedStat key={index} stat={stat} />
                 ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16 text-center md:text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-lg mx-auto mt-16 text-center">
                 <div>
                     <h3 className="font-semibold text-muted-foreground">Call Today :</h3>
                     <p className="text-lg font-semibold mt-1">+1 (555) 123-4567</p>
@@ -100,7 +100,7 @@ export function AboutSection() {
                 ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
                  <Button asChild variant="outline" className="font-bold text-base rounded-full border-primary/50 hover:bg-primary/10 hover:text-primary" size="lg">
                     <Link href="#">
                       My Story
@@ -110,3 +110,4 @@ export function AboutSection() {
         </section>
     );
 }
+
