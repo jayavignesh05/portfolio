@@ -41,8 +41,8 @@ const services = [
 ];
 
 export function ServicesSection() {
-    const [activeServiceId, setActiveServiceId] = useState("get-in-touch");
-    const activeImage = PlaceHolderImages.find(p => p.id === (services.find(s => s.id === activeServiceId)?.imageId || 'service-ui-ux'));
+    const [activeServiceId, setActiveServiceId] = useState("service-ui-ux");
+    const activeImage = PlaceHolderImages.find(p => p.id === activeServiceId);
 
   return (
     <section id="services" className="container mx-auto px-4">
@@ -58,7 +58,7 @@ export function ServicesSection() {
                     type="single"
                     collapsible
                     className="w-full"
-                    onValueChange={(value) => setActiveServiceId(value || "get-in-touch")}
+                    onValueChange={(value) => setActiveServiceId(services.find(s => s.id === value)?.imageId || "service-ui-ux")}
                 >
                     {services.map((service, index) => (
                     <AccordionItem value={service.id} key={service.id} className="border-border/50">
