@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -27,7 +28,7 @@ const services = [
   },
   {
     id: "web-design",
-    title: "Kickstart Development",
+    title  : "Kickstart Development",
     description: "Building responsive, high-performance websites and web applications using modern technologies like React, Next.js, and TypeScript. I write clean, efficient, and scalable code.",
     imageId: "service-web-dev"
   },
@@ -35,12 +36,14 @@ const services = [
       id: "branding",
       title: "And Hand Over",
       description: "Creating a strong brand identity that resonates with your target audience. This includes logo design, color palettes, and typography guidelines to ensure a cohesive and memorable brand presence.",
-      imageId: "service-branding"
+      imageId: "project-1"
   }
 ];
 
 export function ServicesSection() {
-    const activeImage = PlaceHolderImages.find(p => p.id === "service-web-dev");
+    const [activeServiceId, setActiveServiceId] = useState("get-in-touch");
+    const activeImage = PlaceHolderImages.find(p => p.id === services.find(s => s.id === activeServiceId)?.imageId);
+
   return (
     <section id="services" className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl mx-auto">
@@ -56,6 +59,7 @@ export function ServicesSection() {
                     collapsible
                     className="w-full"
                     defaultValue="get-in-touch"
+                    onValueChange={(value) => setActiveServiceId(value || "get-in-touch")}
                 >
                     {services.map((service, index) => (
                     <AccordionItem value={service.id} key={service.id} className="border-border/50">
