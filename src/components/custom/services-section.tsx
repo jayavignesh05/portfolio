@@ -102,7 +102,7 @@ export function ServicesSection() {
                         onValueChange={handleValueChange}
                     >
                         {services.map((service, index) => (
-                            <AccordionItem value={service.id} key={service.id} className="border-border/50">
+                            <AccordionItem value={service.id} key={service.id} className="border-border/50 text">
                                 <AccordionTrigger className="text-xl font-bold hover:no-underline text-left py-6">
                                     <span className="text-foreground/50 mr-4">0{index + 1}</span>{service.title}
                                 </AccordionTrigger>
