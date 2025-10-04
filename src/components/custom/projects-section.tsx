@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -41,27 +40,25 @@ const projects = [
     }
 ];
 
-function ProjectCard({ project, index, scrollYProgress }: { project: any, index: number, scrollYProgress: any }) {
+function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
-
-    const targetScale = 1 - ((projects.length - index) * 0.05);
-    const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
     
-    // Custom range for each card's animation
-    const rangeStart = index / projects.length;
-    const rangeEnd = rangeStart + (1 / projects.length);
-    const cardScale = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, targetScale]);
-    const cardOpacity = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0.5]);
+    const rangeStart = index / totalProjects;
+    const rangeEnd = (index + 1) / totalProjects;
 
+    const scale = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart, rangeEnd], [0.9, 1, 1]);
+    const y = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart], [20, 0]);
+    const opacity = useTransform(scrollYProgress, [rangeEnd - 0.05, rangeEnd], [1, 0]);
 
     return (
         <motion.div
-            style={{ 
-                scale: index === 0 ? 1 : cardScale,
-                top: `calc(1rem * ${index})`,
-                opacity: index === 0 ? 1 : cardOpacity,
+            style={{
+                scale,
+                y,
+                opacity,
+                zIndex: totalProjects - index,
             }}
-            className="sticky origin-top"
+            className="absolute top-0 flex h-full w-full items-center justify-center"
         >
             <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
                 {image && (
@@ -95,14 +92,14 @@ export function ProjectsSection() {
     });
 
     return (
-        <section id="projects" className="bg-background overflow-hidden">
+        <section id="projects" className="bg-background">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative max-w-4xl mx-auto" style={{ height: `${projects.length * 50}vh` }}>
+                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
                     <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
@@ -110,6 +107,7 @@ export function ProjectsSection() {
                                 project={project}
                                 index={index}
                                 scrollYProgress={scrollYProgress}
+                                totalProjects={projects.length}
                             />
                         ))}
                     </div>
