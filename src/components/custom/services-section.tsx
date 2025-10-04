@@ -58,7 +58,6 @@ export function ServicesSection() {
                     type="single"
                     collapsible
                     className="w-full"
-                    defaultValue="get-in-touch"
                     onValueChange={(value) => setActiveServiceId(value || "get-in-touch")}
                 >
                     {services.map((service, index) => (
