@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -5,17 +6,68 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { TypewriterEffect } from "./typewriter-effect";
+import { motion, useAnimation } from "framer-motion";
+
+const AnimatedTextCharacter = ({ text, className }: { text: string, className?: string }) => {
+  const letters = text.split("");
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0.2 * i },
+    }),
+  };
+
+  const child = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      className={cn("inline-block", className)}
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
+      {letters.map((letter, index) => (
+        <motion.span variants={child} key={index} className="inline-block">
+          {letter === " " ? "\u00A0" : letter}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+};
+
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
                 setIsMounted(true);
+                controls.start("visible");
                 observer.disconnect();
             }
         },
@@ -34,34 +86,59 @@ export function HeroSection() {
             observer.unobserve(currentRef);
         }
     };
-  }, []);
+  }, [controls]);
 
   return (
     <section id="home" ref={ref} className="container mx-auto px-4 min-h-[calc(100vh-5rem)] flex items-center justify-center pt-28 pb-10">
-      <div className={cn("w-full text-center transition-all duration-1000 ease-out", isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-        <p className={cn(
-            "text-lg text-muted-foreground transition-all duration-700 ease-out",
-            isMounted ? "opacity-100" : "opacity-0"
-        )}>
+      <motion.div 
+        className="w-full text-center"
+        initial="hidden"
+        animate={controls}
+        variants={{
+          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+          hidden: { opacity: 0, y: 20 },
+        }}
+      >
+        <motion.p 
+          className="text-lg text-muted-foreground"
+          variants={{
+            visible: { opacity: 1, transition: { delay: 0.1 } },
+            hidden: { opacity: 0 },
+          }}
+        >
             Dedicated to top-notch design, I am a
-        </p>
+        </motion.p>
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
-          <TypewriterEffect isMounted={isMounted} text="UI/UX Designer" coloredText="Designer" />
-          <TypewriterEffect isMounted={isMounted} text="& Frontend Developer" coloredText="Developer" baseDelay={1500} />
+          <div className="block">
+            <AnimatedTextCharacter text="UI/UX " />
+            <AnimatedTextCharacter text="Designer" className="text-primary" />
+            <AnimatedTextCharacter text=" &" />
+          </div>
+          <div className="block">
+            <AnimatedTextCharacter text="Frontend " />
+            <AnimatedTextCharacter text="Developer" className="text-primary" />
+          </div>
         </h1>
-        <p className={cn(
-            "mt-6 text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 ease-out delay-300",
-            isMounted ? "opacity-100" : "opacity-0"
-        )}>
+        <motion.p 
+          className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
+          variants={{
+            visible: { opacity: 1, transition: { delay: 1.2 } },
+            hidden: { opacity: 0 },
+          }}
+        >
           with a multidisciplinary approach for start-ups and small brand-conscious companies.
-        </p>
-        <Button asChild variant="link" className={cn(
-            "text-primary p-0 mt-8 h-auto font-semibold text-lg transition-all duration-700 ease-out delay-500",
-            isMounted ? "opacity-100" : "opacity-0"
-        )}>
-          <Link href="#contact">Contact Me<ArrowRight className="ml-2 h-5 w-5" /></Link>
-        </Button>
-      </div>
+        </motion.p>
+        <motion.div
+           variants={{
+            visible: { opacity: 1, transition: { delay: 1.4 } },
+            hidden: { opacity: 0 },
+          }}
+        >
+            <Button asChild variant="link" className="text-primary p-0 mt-8 h-auto font-semibold text-lg">
+                <Link href="#contact">Contact Me<ArrowRight className="ml-2 h-5 w-5" /></Link>
+            </Button>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
