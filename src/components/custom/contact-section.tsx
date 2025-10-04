@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -86,7 +87,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={ref} className={cn("bg-card transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
+    <section id="contact" ref={ref} className={cn("bg-card transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
       <div className="container mx-auto px-4 py-20 sm:py-28 md:py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Get In Touch</h2>

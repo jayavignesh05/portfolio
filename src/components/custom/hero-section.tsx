@@ -10,13 +10,12 @@ import { cn } from "@/lib/utils";
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
-                setInView(true);
+                setIsMounted(true);
                 observer.disconnect();
             }
         },
@@ -36,15 +35,9 @@ export function HeroSection() {
     };
   }, []);
 
-  useEffect(() => {
-    if (inView) {
-      setIsMounted(true);
-    }
-  }, [inView]);
-
   return (
-    <section id="home" ref={ref} className={cn("container mx-auto px-4 min-h-screen flex items-center justify-center transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
-      <div className="w-full text-center">
+    <section id="home" ref={ref} className="container mx-auto px-4 min-h-screen flex items-center justify-center">
+      <div className={cn("w-full text-center transition-all duration-1000 ease-out", isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
         <p className={cn(
             "text-lg text-muted-foreground transition-all duration-700 ease-out",
             isMounted ? "opacity-100" : "opacity-0"

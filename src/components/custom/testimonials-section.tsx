@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -60,7 +61,7 @@ export function TestimonialsSection() {
     }, []);
 
   return (
-    <section id="testimonials" ref={ref} className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
+    <section id="testimonials" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What My Clients Say</h2>
         <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">

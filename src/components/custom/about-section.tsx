@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Award, Briefcase, Smile } from "lucide-react";
@@ -55,7 +56,7 @@ export function AboutSection() {
     }, []);
 
     return (
-        <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
+        <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
             <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight">A Little About Me</h2>
                 <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">

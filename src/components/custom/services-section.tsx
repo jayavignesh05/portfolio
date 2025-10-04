@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -44,7 +45,7 @@ const services = [
 const DEFAULT_IMAGE_ID = "service-ui-ux";
 
 export function ServicesSection() {
-    const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
+    const [activeImageId, setActiveImageId] = useState(DEFAULT_IMAGE_ID);
     const ref = useRef<HTMLDivElement>(null);
     const [inView, setInView] = useState(false);
 
@@ -75,16 +76,17 @@ export function ServicesSection() {
     const handleValueChange = (value: string) => {
         if (value) {
             const service = services.find(s => s.id === value);
-            setActiveServiceId(service ? service.imageId : DEFAULT_IMAGE_ID);
+            setActiveImageId(service ? service.imageId : DEFAULT_IMAGE_ID);
         } else {
-            setActiveServiceId(null);
+            // When accordion is closed, reset to default
+            setActiveImageId(DEFAULT_IMAGE_ID);
         }
     };
     
-    const activeImage = PlaceHolderImages.find(p => p.id === (activeServiceId || DEFAULT_IMAGE_ID));
+    const activeImage = PlaceHolderImages.find(p => p.id === activeImageId);
 
     return (
-        <section id="services" ref={ref} className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
+        <section id="services" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
             <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-start max-w-7xl mx-auto">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-4">
