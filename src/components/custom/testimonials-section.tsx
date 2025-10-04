@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Star } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -28,8 +32,35 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect();
+                }
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
   return (
-    <section id="testimonials" className="container mx-auto px-4">
+    <section id="testimonials" ref={ref} className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What My Clients Say</h2>
         <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   Carousel,
@@ -11,6 +13,8 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const projects = [
     {
@@ -44,9 +48,36 @@ const projects = [
 ];
 
 export function ProjectsSection() {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect();
+                }
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
   return (
-    <section id="projects" className="bg-card">
-      <div className="container mx-auto px-4">
+    <section id="projects" ref={ref} className={cn("bg-card transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
+      <div className="container mx-auto px-4 py-20 sm:py-28 md:py-32">
         <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
             <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A selection of my work that showcases my skills and creativity.</p>

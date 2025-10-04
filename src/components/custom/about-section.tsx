@@ -1,5 +1,9 @@
+"use client";
+
 import { Award, Briefcase, Smile } from "lucide-react";
 import { AnimatedStat } from "./animated-stat";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const stats = [
     {
@@ -23,8 +27,35 @@ const stats = [
 ];
 
 export function AboutSection() {
+    const ref = useRef<HTMLDivElement>(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect();
+                }
+            },
+            {
+                threshold: 0.1,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
     return (
-        <section id="about" className="container mx-auto px-4">
+        <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
             <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight">A Little About Me</h2>
                 <p className="text-lg text-muted-foreground mt-4 max-w-3xl mx-auto">

@@ -4,18 +4,46 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                setInView(true);
+                observer.disconnect();
+            }
+        },
+        {
+            threshold: 0.1,
+        }
+    );
+
+    if (ref.current) {
+        observer.observe(ref.current);
+    }
+
+    return () => {
+        if (ref.current) {
+            observer.unobserve(ref.current);
+        }
+    };
   }, []);
 
+  useEffect(() => {
+    if (inView) {
+      setIsMounted(true);
+    }
+  }, [inView]);
+
   return (
-    <section id="home" className="container mx-auto px-4 min-h-screen flex items-center justify-center">
+    <section id="home" ref={ref} className={cn("container mx-auto px-4 min-h-screen flex items-center justify-center transition-opacity duration-1000 ease-in", inView ? "opacity-100" : "opacity-0")}>
       <div className="w-full text-center">
         <p className={cn(
             "text-lg text-muted-foreground transition-all duration-700 ease-out",
