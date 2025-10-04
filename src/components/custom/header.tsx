@@ -54,14 +54,14 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-medium text-sm"
+                className="text-foreground/80 hover:text-primary transition-colors font-semibold text-sm"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
           
-          <Button asChild className="font-bold text-base rounded-full">
+          <Button asChild className="font-bold text-base rounded-full" size="lg">
             <Link href="#contact">Book a Call <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
         </div>
