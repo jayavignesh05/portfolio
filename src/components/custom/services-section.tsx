@@ -42,23 +42,25 @@ export function ServicesSection() {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight">What I can do for you</h2>
           <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">My range of services to bring your ideas to life with precision and creativity.</p>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-6xl mx-auto">
           <Accordion
             type="single"
             collapsible
             className="w-full"
             defaultValue="ui-ux"
             onValueChange={(value) => {
-              const service = services.find(s => s.id === value);
-              if (service) setActiveServiceImage(service.imageId);
+              if (value) {
+                const service = services.find(s => s.id === value);
+                if (service) setActiveServiceImage(service.imageId);
+              }
             }}
           >
             {services.map((service, index) => (
               <AccordionItem value={service.id} key={service.id} className="border-border">
-                <AccordionTrigger className="text-2xl font-semibold hover:no-underline text-left py-6">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline text-left py-6">
                   <span className="text-primary mr-4">0{index+1}</span>{service.title}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base pb-6">
+                <AccordionContent className="text-muted-foreground text-base pb-6 pl-[42px]">
                   {service.description}
                 </AccordionContent>
               </AccordionItem>

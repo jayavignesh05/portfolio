@@ -36,33 +36,33 @@ export function TestimonialsSection() {
           I'm proud to have collaborated with some amazing clients.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {testimonials.map((testimonial, index) => {
           const image = PlaceHolderImages.find(p => p.id === testimonial.imageId);
           return (
-            <Card key={index} className="bg-card border-border/50 hover:border-primary/50 transition-colors shadow-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
+            <Card key={index} className="bg-card border-border/50 hover:border-primary/50 transition-colors shadow-sm flex flex-col">
+              <CardContent className="p-8 flex flex-col flex-grow">
+                <p className="text-muted-foreground mb-6 flex-grow" dangerouslySetInnerHTML={{ __html: testimonial.comment }} />
+                <div className="flex items-center">
                   {image && (
                     <Image
                       src={image.imageUrl}
                       alt={testimonial.name}
-                      width={56}
-                      height={56}
+                      width={48}
+                      height={48}
                       className="rounded-full mr-4"
                       data-ai-hint={image.imageHint}
                     />
                   )}
-                  <div>
+                  <div className="flex-grow">
                     <h3 className="font-bold text-lg">{testimonial.name}</h3>
                     <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                   </div>
-                </div>
-                <p className="text-muted-foreground mb-4" dangerouslySetInnerHTML={{ __html: testimonial.comment }} />
-                <div className="flex">
+                   <div className="flex">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                     ))}
+                </div>
                 </div>
               </CardContent>
             </Card>

@@ -56,7 +56,7 @@ export function ProjectsSection() {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent>
             {projects.map((project) => {
@@ -64,7 +64,7 @@ export function ProjectsSection() {
               return (
                 <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <div className="group relative aspect-video rounded-xl overflow-hidden">
+                    <div className="group relative aspect-[4/3] rounded-xl overflow-hidden">
                         {image && (
                             <Image
                                 src={image.imageUrl}
@@ -75,11 +75,11 @@ export function ProjectsSection() {
                             />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-6 text-white">
+                        <div className="absolute bottom-0 left-0 p-6 text-white w-full">
                             <Badge variant="secondary" className="mb-2 bg-primary/20 text-primary border-none">{project.category}</Badge>
                             <h3 className="text-2xl font-bold">{project.title}</h3>
                             <p className="text-white/80 mt-1 line-clamp-2">{project.description}</p>
-                            <Button asChild variant="link" className="text-primary p-0 mt-4 h-auto">
+                            <Button asChild variant="link" className="text-primary p-0 mt-4 h-auto font-semibold">
                                 <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
                             </Button>
                         </div>

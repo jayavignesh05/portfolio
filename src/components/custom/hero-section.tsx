@@ -6,12 +6,17 @@ export function HeroSection() {
 
   return (
     <section id="home" className="container mx-auto px-4 min-h-screen flex items-center justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-8 md:gap-4 lg:gap-16 w-full max-w-7xl">
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-center md:text-right text-foreground tracking-tighter">
-          Digital
-        </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-16 w-full max-w-6xl">
+        <div className="text-center md:text-left">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter">
+            Digital Designer & Frontend Developer
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto md:mx-0">
+            I craft beautiful and functional digital experiences. Let's build something amazing together.
+          </p>
+        </div>
 
-        <div className="relative aspect-[3/4] w-full max-w-[300px] sm:max-w-sm mx-auto md:max-w-none">
+        <div className="relative aspect-[3/4] w-full max-w-[300px] sm:max-w-xs mx-auto">
           {developerImage && (
             <ParallaxCard
               src={developerImage.imageUrl}
@@ -19,14 +24,10 @@ export function HeroSection() {
               imageHint={developerImage.imageHint}
             />
           )}
-          <div className="absolute -top-10 -right-10 md:-top-16 md:-right-16 text-primary flex items-center gap-2 animate-wave" style={{ animationDelay: '1s' }}>
-             <span className="text-5xl" role="img" aria-label="Waving hand">👋</span>
+          <div className="absolute -top-8 -right-8 text-primary flex items-center gap-2 animate-wave" style={{ animationDelay: '1s' }}>
+             <span className="text-4xl" role="img" aria-label="Waving hand">👋</span>
           </div>
         </div>
-
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-center md:text-left text-foreground tracking-tighter">
-          Designer
-        </h1>
       </div>
     </section>
   );

@@ -69,6 +69,7 @@ export function ContactSection() {
         <Card className="max-w-4xl mx-auto p-0 overflow-hidden border-border/50">
           <div className="grid md:grid-cols-2">
             <div className="p-8 md:p-12">
+              <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -110,7 +111,7 @@ export function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full font-bold" disabled={form.formState.isSubmitting}>
+                  <Button type="submit" className="w-full font-bold" size="lg" disabled={form.formState.isSubmitting}>
                     {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Submit
                   </Button>
