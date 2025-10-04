@@ -34,7 +34,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "container mx-auto px-4 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5",
+          "container mx-auto px-6 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5",
           isScrolled ? "h-16" : "h-20"
         )}
       >
@@ -43,7 +43,7 @@ export function Header() {
             Visio<span className="text-primary">Folio</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-10 mx-8">
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
@@ -56,7 +56,7 @@ export function Header() {
           </nav>
           
           <Link href="#contact" passHref>
-            <Button className="rounded-full bg-primary-foreground text-background hover:bg-primary-foreground/90 font-bold px-5 py-2 text-sm h-auto">
+            <Button className="rounded-full bg-primary-foreground text-background hover:bg-primary-foreground/90 font-bold px-6 py-2 text-sm h-auto">
               Contact
             </Button>
           </Link>
