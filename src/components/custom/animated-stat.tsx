@@ -4,7 +4,6 @@
 import { useEffect, useRef, useState } from "react";
 
 type Stat = {
-    icon: React.ReactNode | null;
     value: number;
     suffix: string;
     label: string;
@@ -63,16 +62,11 @@ export function AnimatedStat({ stat }: { stat: Stat }) {
     }, [inView, stat.value]);
 
     return (
-        <div ref={ref} className="text-center">
-            {stat.icon && (
-                 <div className="flex justify-center mb-4">
-                    {stat.icon}
-                </div>
-            )}
-            <p className="text-6xl font-black text-primary">
+        <div ref={ref}>
+            <div className="text-5xl font-black text-primary">
                 {count}{stat.suffix}
-            </p>
-            <p className="text-muted-foreground mt-2 text-base font-semibold">{stat.label}</p>
+            </div>
+            <div className="text-muted-foreground mt-3 text-base">{stat.label}</div>
         </div>
     );
 }

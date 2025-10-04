@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { ProfileCard } from "./profile-card";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
+import { AnimatedStat } from "./animated-stat";
 
 const skills = [
     "Product Design", "UX Design", "UI Design", "Framer",
@@ -14,15 +15,18 @@ const skills = [
 
 const stats = [
     {
-        value: "12",
+        value: 12,
+        suffix: "",
         label: "Years of Experience",
     },
     {
-        value: "270",
+        value: 270,
+        suffix: "",
         label: "Completed Projects",
     },
     {
-        value: "50+",
+        value: 50,
+        suffix: "+",
         label: "Clients on Worldwide",
     }
 ];
@@ -77,12 +81,10 @@ export function AboutSection() {
                         ))}
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         {stats.map((stat, index) => (
-                            <div key={index} className="bg-card p-6 rounded-lg border border-border/50">
-                                <div className="text-5xl font-black text-primary">{stat.value}</div>
-
-                                <div className="text-muted-foreground mt-3 text-base">{stat.label}</div>
+                            <div key={index} className="bg-card p-6 rounded-lg border border-border/50 text-center">
+                                <AnimatedStat stat={stat} />
                             </div>
                         ))}
                     </div>
