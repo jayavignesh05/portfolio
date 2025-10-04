@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { ArrowRight } from 'lucide-react';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,10 +23,10 @@ export function Header() {
   }, []);
 
   const menuLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
+    { name: "Work", href: "#projects" },
+    { name: "Process", href: "#services" },
+    { name: "FAQs", href: "#testimonials" },
+    { name: "About Me", href: "#about" },
   ];
 
   return (
@@ -36,7 +37,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "mx-auto mt-4 px-4 md:px-6 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl",
+          "mx-auto mt-4 px-6 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl",
           isScrolled ? "h-16" : "h-20"
         )}
       >
@@ -60,11 +61,9 @@ export function Header() {
             ))}
           </nav>
           
-          <Link href="#contact" passHref>
-            <Button className="rounded-full font-bold px-6 py-2 text-sm h-auto text-primary-foreground bg-primary hover:bg-primary/90">
-              Contact
-            </Button>
-          </Link>
+          <Button asChild variant="link" className="text-primary p-0 h-auto font-semibold text-base">
+            <Link href="#contact">Book a Call <ArrowRight className="ml-2 h-4 w-4" /></Link>
+        </Button>
         </div>
       </div>
     </header>
