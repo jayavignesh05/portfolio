@@ -89,7 +89,7 @@
     background-attachment: fixed;
   }
   section {
-    @apply w-full py-20 sm:py-28 md:py-32;
+    @apply w-full py-16 sm:py-20 md:py-24;
   }
 }
 
