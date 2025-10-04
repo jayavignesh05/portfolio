@@ -41,20 +41,27 @@ const projects = [
     }
 ];
 
-function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
+function ProjectCard({ project, index, scrollYProgress }: { project: any, index: number, scrollYProgress: any }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
 
-    const initialScale = 1 - ((totalProjects - 1 - index) * 0.05);
-    const scale = useTransform(
-      scrollYProgress,
-      [index / totalProjects, (index + 1) / totalProjects],
-      [initialScale, 1]
-    );
+    const targetScale = 1 - ((projects.length - index) * 0.05);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
+    
+    // Custom range for each card's animation
+    const rangeStart = index / projects.length;
+    const rangeEnd = rangeStart + (1 / projects.length);
+    const cardScale = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, targetScale]);
+    const cardOpacity = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0.5]);
+
 
     return (
         <motion.div
-            style={{ scale }}
-            className="sticky top-28 flex justify-center"
+            style={{ 
+                scale: index === 0 ? 1 : cardScale,
+                top: `calc(1rem * ${index})`,
+                opacity: index === 0 ? 1 : cardOpacity,
+            }}
+            className="sticky origin-top"
         >
             <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
                 {image && (
@@ -88,22 +95,21 @@ export function ProjectsSection() {
     });
 
     return (
-        <section id="projects" className="bg-background">
+        <section id="projects" className="bg-background overflow-hidden">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-                    <div className="sticky top-0 h-screen">
+                <div ref={ref} className="relative max-w-4xl mx-auto" style={{ height: `${projects.length * 50}vh` }}>
+                    <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}
                                 project={project}
                                 index={index}
                                 scrollYProgress={scrollYProgress}
-                                totalProjects={projects.length}
                             />
                         ))}
                     </div>
