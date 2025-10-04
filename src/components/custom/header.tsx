@@ -31,13 +31,12 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out w-[calc(100%-2rem)]",
-        "md:w-auto"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
       )}
     >
       <div
         className={cn(
-          "container mx-auto px-4 md:px-6 bg-background/50 backdrop-blur-lg border-2 border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5",
+          "container mx-auto mt-4 px-4 md:px-6 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5",
           isScrolled ? "h-16" : "h-20"
         )}
       >
@@ -49,7 +48,7 @@ export function Header() {
               </Avatar>
             </Link>
 
-          <nav className="hidden md:flex items-center gap-8 mx-auto">
+          <nav className="hidden md:flex items-center gap-8">
             {menuLinks.map((link) => (
               <Link
                 key={link.href}
