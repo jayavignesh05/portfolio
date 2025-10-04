@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const projects = [
     {
@@ -48,7 +48,7 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
 
     const scale = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart, rangeEnd], [0.9, 1, 1]);
     const y = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart], [20, 0]);
-    const opacity = useTransform(scrollYProgress, [rangeEnd - 0.05, rangeEnd], [1, 0]);
+    const opacity = useTransform(scrollYProgress, [rangeEnd - 0.15, rangeEnd], [1, 0]);
 
     return (
         <motion.div
@@ -91,6 +91,12 @@ export function ProjectsSection() {
         offset: ["start start", "end end"]
     });
 
+    const smoothScrollYProgress = useSpring(scrollYProgress, {
+        mass: 0.1,
+        stiffness: 80,
+        damping: 20,
+    });
+
     return (
         <section id="projects" className="bg-background">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
@@ -99,14 +105,14 @@ export function ProjectsSection() {
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 80}vh` }}>
+                <div ref={ref} className="relative" style={{ height: `${projects.length * 70}vh` }}>
                     <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}
                                 project={project}
                                 index={index}
-                                scrollYProgress={scrollYProgress}
+                                scrollYProgress={smoothScrollYProgress}
                                 totalProjects={projects.length}
                             />
                         ))}
