@@ -51,7 +51,9 @@ export function TypewriterEffect({ isMounted, text, coloredText, baseDelay = 0 }
         {displayedText.length > parts[0].length && (
             <span className="text-primary">{coloredText.substring(0, displayedText.length - parts[0].length)}</span>
         )}
-        {displayedParts[1] && coloredText}
+        {displayedParts.length > 1 && displayedParts[0].length === parts[0].length && (
+          <>{coloredText.substring(coloredText.length)}</>
+        )}
         {displayedParts[1]}
       </>
     );
@@ -63,7 +65,7 @@ export function TypewriterEffect({ isMounted, text, coloredText, baseDelay = 0 }
       isMounted ? "opacity-100" : "opacity-0"
     )}>
       {renderText()}
-      <span className="inline-block w-1 h-full animate-pulse bg-primary ml-2" />
+      <span className="inline-block w-1 h-[0.8em] animate-pulse bg-primary ml-2" />
     </span>
   );
 }
