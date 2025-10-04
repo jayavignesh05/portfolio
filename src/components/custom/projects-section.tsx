@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -10,6 +11,13 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const projects = [
+    {
+        id: "project-4",
+        title: "Summer Vibes Festival Campaign",
+        category: "Graphic Design",
+        description: "Created promotional materials for the 'Summer Vibes Festival,' including posters, flyers, and social media graphics.",
+        imageId: "project-4"
+    },
     {
         id: "project-1",
         title: "Coral Spiral Abstract",
@@ -31,53 +39,45 @@ const projects = [
         description: "A collection of sharp, angular black prisms floating against a dark gradient background, showcasing a modern and sophisticated approach.",
         imageId: "project-3"
     },
-    {
-        id: "project-4",
-        title: "Summer Vibes Festival Campaign",
-        category: "Graphic Design",
-        description: "Created promotional materials for the 'Summer Vibes Festival,' including posters, flyers, and social media graphics.",
-        imageId: "project-4"
-    }
 ];
 
 function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
-    
-    const rangeStart = index / totalProjects;
-    const rangeEnd = (index + 1) / totalProjects;
 
-    const y = useTransform(scrollYProgress, [rangeStart, rangeEnd], [0, -100]);
-    const scale = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0.8]);
-    const opacity = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0]);
+    const entranceRangeStart = (index - 1) / totalProjects;
+    const entranceRangeEnd = index / totalProjects;
+    const y = useTransform(scrollYProgress, [entranceRangeStart, entranceRangeEnd], ["100%", "0%"]);
+
+    const exitRangeStart = index / totalProjects;
+    const exitRangeEnd = (index + 1) / totalProjects;
+
+    const rotateX = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [0, -15]);
+    const scale = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [1, 0.9]);
 
     return (
         <motion.div
             style={{
                 y,
                 scale,
-                opacity,
-                zIndex: totalProjects - index,
+                rotateX,
+                zIndex: index,
             }}
-            className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+            className="absolute top-0 left-0 w-full h-full"
         >
-            <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
-                {image && (
-                    <Image
-                        src={image.imageUrl}
-                        alt={project.title}
-                        fill
-                        className="object-cover rounded-xl transition-transform duration-500 ease-in-out group-hover:scale-105"
-                        data-ai-hint={image.imageHint}
-                    />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                    <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
-                    <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
-                    <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
-                    <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
-                        <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
+            <div className="flex h-full w-full items-center justify-center">
+                <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
+                    {image && (
+                        <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                        <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
+                        <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
+                        <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
+                        <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
+                            <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </motion.div>
@@ -106,7 +106,10 @@ export function ProjectsSection() {
                 </div>
                 
                 <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-                    <div className="sticky top-28 h-screen">
+                    <div
+                        className="sticky top-28 h-screen overflow-hidden"
+                        style={{ perspective: '1000px' }}
+                    >
                         {projects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}
