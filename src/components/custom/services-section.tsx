@@ -8,12 +8,15 @@ import {
 } from "@/components/ui/accordion";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ParallaxCard } from "./parallax-card";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 
 const services = [
   {
-    id: "ui-ux",
-    title: "UI/UX DESIGN",
-    description: "Crafting intuitive and beautiful user interfaces that are both easy to use and delightful to interact with. From wireframes to final mockups, I focus on creating a seamless user journey.",
+    id: "get-in-touch",
+    title: "LET'S GET IN TOUCH",
+    description: "Have a project in mind or just want to say hi? I'd love to hear from you. Click the button below to send me a message.",
     imageId: "service-ui-ux"
   },
   {
@@ -52,7 +55,7 @@ export function ServicesSection() {
                     type="single"
                     collapsible
                     className="w-full"
-                    defaultValue="ui-ux"
+                    defaultValue="get-in-touch"
                 >
                     {services.map((service, index) => (
                     <AccordionItem value={service.id} key={service.id} className="border-border/50">
@@ -60,7 +63,12 @@ export function ServicesSection() {
                         <span className="text-foreground/50 mr-4">0{index+1}</span>{service.title}
                         </AccordionTrigger>
                         <AccordionContent className="text-muted-foreground text-base pb-6 pl-[42px]">
-                        {service.description}
+                            {service.description}
+                            {service.id === 'get-in-touch' && (
+                                <Button asChild variant="link" className="text-primary p-0 mt-4 h-auto font-semibold">
+                                    <Link href="#contact">Contact Me <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                </Button>
+                            )}
                         </AccordionContent>
                     </AccordionItem>
                     ))}
