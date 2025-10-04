@@ -118,7 +118,7 @@ export function ServicesSection() {
                             ))}
                         </Accordion>
                     </div>
-                    <div className="relative w-full aspect-[4/5] max-w-md mx-auto mt-8 md:mt-0">
+                    <div className="relative hidden md:block w-full aspect-[4/5] max-w-md mx-auto mt-8 md:mt-0">
                         {activeImage && (
                             <ParallaxCard
                                 src={activeImage.imageUrl}
