@@ -42,7 +42,7 @@ const services = [
 
 export function ServicesSection() {
     const [activeServiceId, setActiveServiceId] = useState("get-in-touch");
-    const activeImage = PlaceHolderImages.find(p => p.id === services.find(s => s.id === activeServiceId)?.imageId);
+    const activeImage = PlaceHolderImages.find(p => p.id === (services.find(s => s.id === activeServiceId)?.imageId || 'service-ui-ux'));
 
   return (
     <section id="services" className="container mx-auto px-4">
