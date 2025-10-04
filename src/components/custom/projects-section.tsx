@@ -46,19 +46,19 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
     const rangeStart = index / totalProjects;
     const rangeEnd = (index + 1) / totalProjects;
 
-    const scale = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart, rangeEnd], [0.9, 1, 1]);
-    const y = useTransform(scrollYProgress, [rangeStart - 0.1, rangeStart], [20, 0]);
-    const opacity = useTransform(scrollYProgress, [rangeEnd - 0.15, rangeEnd], [1, 0]);
+    const y = useTransform(scrollYProgress, [rangeStart, rangeEnd], [0, -100]);
+    const scale = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0.8]);
+    const opacity = useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 0]);
 
     return (
         <motion.div
             style={{
-                scale,
                 y,
+                scale,
                 opacity,
                 zIndex: totalProjects - index,
             }}
-            className="absolute top-0 flex h-full w-full items-center justify-center"
+            className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
         >
             <div className="group relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50 p-1">
                 {image && (
@@ -105,7 +105,7 @@ export function ProjectsSection() {
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 70}vh` }}>
+                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
                     <div className="sticky top-28 h-screen">
                         {projects.map((project, index) => (
                             <ProjectCard
