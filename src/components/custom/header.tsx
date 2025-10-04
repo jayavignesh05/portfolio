@@ -61,9 +61,9 @@ export function Header() {
             ))}
           </nav>
           
-          <Button asChild variant="link" className="text-primary p-0 h-auto font-semibold text-base">
+          <Button asChild className="font-bold text-base rounded-full">
             <Link href="#contact">Book a Call <ArrowRight className="ml-2 h-4 w-4" /></Link>
-        </Button>
+          </Button>
         </div>
       </div>
     </header>

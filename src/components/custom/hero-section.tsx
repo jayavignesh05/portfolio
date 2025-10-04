@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="w-full text-center">
         <p className="text-lg text-muted-foreground">Dedicated to top-notch design, I am a</p>
         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-foreground tracking-tighter mt-4">
-          Graphic &amp; Visual <br /> Identity <span className="font-black">Designer</span>
+          Graphic &amp; Visual <br /> Identity <span className="text-primary">Designer</span>
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
           with a multidisciplinary approach for start-ups and small brand-conscious companies.
