@@ -33,7 +33,7 @@ const services = [
   },
   {
       id: "branding",
-      title: "BRANDING",
+      title: "And Hand Over",
       description: "Creating a strong brand identity that resonates with your target audience. This includes logo design, color palettes, and typography guidelines to ensure a cohesive and memorable brand presence.",
       imageId: "service-branding"
   }
