@@ -76,11 +76,11 @@ export function AboutSection() {
                         ))}
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                         {stats.map((stat, index) => (
-                            <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-card hover:bg-muted/50 transition-colors">
+                            <div key={index} className="bg-card p-6 rounded-lg border border-border/50">
                                 <div className="text-4xl font-black text-primary">{stat.value}</div>
-                                <div className="text-muted-foreground text-right">{stat.label}</div>
+                                <div className="text-muted-foreground mt-2">{stat.label}</div>
                             </div>
                         ))}
                     </div>
