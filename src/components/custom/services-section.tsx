@@ -63,7 +63,7 @@ export function ServicesSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center max-w-7xl mx-auto">
             <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
-                    <h2 className="text-5xl md:text-5xl  font-black uppercase tracking-tighter">The <span className="text-primary">strategy</span> behind  exceptional  results</h2>
+                    <h2 className="text-5xl md:text-5xl font-black uppercase tracking-tighter">The <span className="text-primary">strategy</span> behind exceptional results</h2>
                     <p className="text-lg text-muted-foreground max-w-lg">
                         As a digital designer, I am a visual storyteller, crafting experiences that connect deeply and spark creativity.
                     </p>
