@@ -39,7 +39,7 @@ export function ProfileCard() {
                 <span className="text-sm text-muted-foreground">Available for work</span>
             </div>
             <h2 className="text-3xl font-bold mb-1">Jayavignesh</h2>
-            <p className="text-muted-foreground mb-6">UI/UX Interaction Designer Based in Berlin.</p>
+            <p className="text-muted-foreground mb-6">Frontend Developer and UI/UX Designer</p>
             
             <div className="flex justify-center gap-4 mb-6">
                  {socialLinks.map((link, index) => (
