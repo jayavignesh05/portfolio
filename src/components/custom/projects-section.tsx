@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
@@ -117,16 +117,18 @@ export function ProjectsSection() {
                 </div>
                 
                 {isMobile ? (
-                     <Carousel opts={{ align: "start", loop: true, }}>
+                     <Carousel opts={{ align: "start", loop: true, }} className="w-full max-w-4xl mx-auto">
                         <CarouselContent>
                             {projects.map((project) => (
-                                <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
+                                <CarouselItem key={project.id}>
                                     <div className="p-1">
                                         <ProjectCardContent project={project} />
                                     </div>
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
+                        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+                        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
                     </Carousel>
                 ) : (
                     <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
@@ -150,4 +152,5 @@ export function ProjectsSection() {
         </section>
     );
 }
+
 
