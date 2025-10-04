@@ -55,8 +55,7 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
     return (
         <motion.div
             style={{ 
-                scale: index === 0 ? 1 : scale, 
-                opacity: index === 0 ? 1 : opacity,
+                scale: index === (totalProjects - 1) ? 1 : scale,
                 top: `${index * 2}rem`
             }}
             className="sticky"
@@ -107,13 +106,14 @@ export function ProjectsSection() {
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        const currentRef = ref.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
