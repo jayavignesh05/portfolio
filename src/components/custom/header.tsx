@@ -61,8 +61,11 @@ export function Header() {
             ))}
           </nav>
           
-          <Button asChild className="font-bold text-base rounded-full" size="lg">
-            <Link href="#contact">Book a Call <ArrowRight className="ml-2 h-4 w-4" /></Link>
+          <Button asChild className="font-bold text-base rounded-full group" size="lg">
+            <Link href="#contact" className="flex items-center gap-2">
+              <span className="group-hover:translate-x-6 transition-transform duration-300 ease-in-out">Book a Call</span>
+              <ArrowRight className="transition-transform duration-300 ease-in-out group-hover:-translate-x-28" />
+            </Link>
           </Button>
         </div>
       </div>
