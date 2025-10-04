@@ -1,42 +1,31 @@
 
 "use client";
 
-import { Award, Briefcase, Smile, Phone, Mail, Twitter, Instagram, Dribbble, Github } from "lucide-react";
-import { AnimatedStat } from "./animated-stat";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { BehanceIcon } from "./behance-icon";
+import { ProfileCard } from "./profile-card";
+import { Badge } from "../ui/badge";
+import { Separator } from "../ui/separator";
+
+const skills = [
+    "Product Design", "UX Design", "UI Design", "Framer",
+    "Interaction Design", "Branding", "Webflow", "UX Research", "No-Code"
+];
 
 const stats = [
     {
-        icon: null,
-        value: 12,
-        suffix: "",
-        label: "Years of Experience"
+        value: "12",
+        label: "Years of Experience",
     },
     {
-        icon: null,
-        value: 270,
-        suffix: "",
-        label: "Completed Projects"
+        value: "270",
+        label: "Completed Projects",
     },
     {
-        icon: null,
-        value: 50,
-        suffix: "+",
-        label: "Clients on Worldwide"
+        value: "50+",
+        label: "Clients on Worldwide",
     }
 ];
-
-const socialLinks = [
-    { href: "#", icon: <Twitter /> },
-    { href: "#", icon: <Instagram /> },
-    { href: "#", icon: <BehanceIcon /> },
-    { href: "#", icon: <Dribbble /> },
-];
-
 
 export function AboutSection() {
     const ref = useRef<HTMLDivElement>(null);
@@ -68,46 +57,35 @@ export function AboutSection() {
 
     return (
         <section id="about" ref={ref} className={cn("container mx-auto px-4 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
-            <div className="text-center mb-16 max-w-4xl mx-auto">
-                <h2 className="text-5xl md:text-6xl font-black tracking-tight uppercase">About Me</h2>
-                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-                    Hi, I&apos;m a digital designer and developer passionate about crafting meaningful and impactful digital experiences.
-                </p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                {stats.map((stat, index) => (
-                    <AnimatedStat key={index} stat={stat} />
-                ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-lg mx-auto mt-16 text-center">
-                <div>
-                    <h3 className="font-semibold text-muted-foreground">Call Today :</h3>
-                    <p className="text-lg font-semibold mt-1">+1 (555) 123-4567</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 max-w-7xl mx-auto items-start">
+                <div className="lg:col-span-1">
+                    <ProfileCard />
                 </div>
-                <div>
-                    <h3 className="font-semibold text-muted-foreground">Email :</h3>
-                    <p className="text-lg font-semibold mt-1">designer@example.com</p>
+                <div className="lg:col-span-2 space-y-8">
+                    <div>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            I&apos;m a passionate Web Designer & Developer. I blend creative design with precise technical execution to deliver outstanding digital experiences.
+                        </p>
+                    </div>
+                    <Separator className="border-dashed" />
+                    <div className="flex flex-wrap gap-3">
+                        {skills.map((skill) => (
+                            <Badge key={skill} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground font-normal px-4 py-2 text-sm rounded-lg">
+                                {skill}
+                            </Badge>
+                        ))}
+                    </div>
+                    <Separator className="border-dashed" />
+                    <div className="space-y-4">
+                        {stats.map((stat, index) => (
+                            <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-card hover:bg-muted/50 transition-colors">
+                                <div className="text-4xl font-black text-primary">{stat.value}</div>
+                                <div className="text-muted-foreground text-right">{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-
-            <div className="flex justify-center items-center gap-6 mt-12">
-                {socialLinks.map((link, index) => (
-                    <Link key={index} href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                        {link.icon}
-                    </Link>
-                ))}
-            </div>
-
-            <div className="text-center mt-16">
-                 <Button asChild variant="outline" className="font-bold text-base rounded-full border-primary/50 hover:bg-primary/10 hover:text-primary" size="lg">
-                    <Link href="#">
-                      My Story
-                    </Link>
-                </Button>
             </div>
         </section>
     );
 }
-
