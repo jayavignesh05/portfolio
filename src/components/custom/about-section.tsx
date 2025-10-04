@@ -1,19 +1,23 @@
 import { Award, Briefcase, Smile } from "lucide-react";
+import { AnimatedStat } from "./animated-stat";
 
 const stats = [
     {
         icon: <Award className="w-10 h-10 text-primary" />,
-        value: "5+",
+        value: 5,
+        suffix: "+",
         label: "Years of Experience"
     },
     {
         icon: <Briefcase className="w-10 h-10 text-primary" />,
-        value: "80+",
+        value: 80,
+        suffix: "+",
         label: "Completed Projects"
     },
     {
         icon: <Smile className="w-10 h-10 text-primary" />,
-        value: "50+",
+        value: 50,
+        suffix: "+",
         label: "Happy Clients"
     }
 ];
@@ -29,13 +33,7 @@ export function AboutSection() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {stats.map((stat, index) => (
-                    <div key={index} className="bg-card p-8 rounded-xl text-center border border-border/50 shadow-sm hover:border-primary/50 transition-colors">
-                        <div className="flex justify-center mb-4">
-                            {stat.icon}
-                        </div>
-                        <p className="text-5xl font-black text-primary">{stat.value}</p>
-                        <p className="text-muted-foreground mt-2 text-base">{stat.label}</p>
-                    </div>
+                    <AnimatedStat key={index} stat={stat} />
                 ))}
             </div>
         </section>
