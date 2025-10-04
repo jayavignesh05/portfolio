@@ -56,7 +56,7 @@ export function Header() {
           </nav>
           
           <Link href="#contact" passHref>
-            <Button className="rounded-full bg-primary-foreground text-background hover:bg-primary-foreground/90 font-bold px-6 py-2 text-sm h-auto">
+            <Button className="rounded-full font-bold px-6 py-2 text-sm h-auto">
               Contact
             </Button>
           </Link>
