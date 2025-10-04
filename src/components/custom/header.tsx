@@ -61,10 +61,10 @@ export function Header() {
             ))}
           </nav>
           
-          <Button asChild className="font-bold text-base rounded-full group" size="lg">
+          <Button asChild className="font-bold text-base rounded-full" size="lg">
             <Link href="#contact" className="flex items-center gap-2">
-              <span className="group-hover:translate-x-6 transition-transform duration-300 ease-in-out">Book a Call</span>
-              <ArrowRight className="transition-transform duration-300 ease-in-out group-hover:-translate-x-28" />
+              <span>Book a Call</span>
+              <ArrowRight />
             </Link>
           </Button>
         </div>
