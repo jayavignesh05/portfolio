@@ -8,9 +8,9 @@ export function HeroSection() {
     <section id="home" className="container mx-auto px-4 min-h-screen flex items-center justify-center">
       <div className="w-full text-center">
         <p className="text-lg text-muted-foreground">Dedicated to top-notch design, I am a</p>
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-foreground tracking-tighter mt-4">
-          UI/UX <span className="text-primary">Designer</span> &amp; <br /> Frontend Developer
-        </h1>
+        <h4 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5">
+          UI/UX <span className="text-primary">Designer</span> &amp; <br /> Frontend <span className="text-primary">Developer</span>
+        </h4>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
           with a multidisciplinary approach for start-ups and small brand-conscious companies.
         </p>
