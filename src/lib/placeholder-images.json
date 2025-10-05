@@ -3,7 +3,7 @@
     {
       "id": "developer-photo",
       "description": "A pensive man sitting in a shadow-lit room",
-      "imageUrl": "/assets/vikiimage.png",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/your-project-id.appspot.com/o/profile_images%2Fvikiimage.png?alt=media&token=...",
       "imageHint": "pensive man"
     },
     {
