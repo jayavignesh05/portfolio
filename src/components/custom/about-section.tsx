@@ -48,13 +48,14 @@ export function AboutSection() {
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        const currentRef = ref.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -65,7 +66,7 @@ export function AboutSection() {
                 <div className="lg:col-span-1">
                     <ProfileCard />
                 </div>
-                <div className="lg:col-span-2 space-y-8 bg-card/20 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-lg">
+                <div className="lg:col-span-2 space-y-8 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-lg">
                     <div>
                         <h2 className="text-3xl font-bold mb-4">About Me</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">

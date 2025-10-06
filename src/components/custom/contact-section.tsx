@@ -49,13 +49,14 @@ export function ContactSection() {
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        const currentRef = ref.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -95,9 +96,9 @@ export function ContactSection() {
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
         </div>
-        <Card className="max-w-4xl mx-auto p-0 overflow-hidden border-border/50">
+        <Card className="max-w-4xl mx-auto p-0 overflow-hidden bg-transparent border-white/10">
           <div className="grid md:grid-cols-2">
-            <div className="p-8 md:p-12">
+            <div className="p-8 md:p-12 bg-white/10 backdrop-blur-2xl">
               <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
