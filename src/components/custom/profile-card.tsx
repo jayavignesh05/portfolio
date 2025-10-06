@@ -4,15 +4,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Twitter, Instagram } from 'lucide-react';
+import { Instagram, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { BehanceIcon } from './behance-icon';
+import { WhatsappIcon } from './whatsapp-icon';
 import { ArrowRight } from 'lucide-react';
 
 const socialLinks = [
-    { href: "#", icon: <Twitter /> },
     { href: "#", icon: <Instagram /> },
-    { href: "#", icon: <BehanceIcon /> },
+    { href: "#", icon: <WhatsappIcon /> },
+    { href: "#", icon: <Mail /> },
 ];
 
 export function ProfileCard() {
