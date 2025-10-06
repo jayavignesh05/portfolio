@@ -7,61 +7,61 @@
       "imageHint": "pensive man"
     },
     {
-      "id": "service-ui-ux",
+      "id": "strategy-illustration",
       "description": "Illustration for UI/UX Design service",
       "imageUrl": "https://images.unsplash.com/photo-1619976336288-38db38e4c503?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNXx8c3RyYXRlZ3l8ZW58MHx8fHwxNzU5NzI5MTA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "strategy design"
     },
     {
-      "id": "service-web-dev",
+      "id": "web-development-illustration",
       "description": "Illustration for Web Development service",
       "imageUrl": "https://images.unsplash.com/photo-1625535069703-a67ae00bd6de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2RlJTIwZWRpdG9yfGVufDB8fHx8MTc1OTQ3MDQ3OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "code editor"
     },
     {
-      "id": "service-branding",
+      "id": "branding-illustration",
       "description": "Illustration for Branding service",
       "imageUrl": "https://images.unsplash.com/photo-1619551734325-81aaf323686c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwcmFuZCUyMGxvZ298ZW58MHx8fHwxNzU5NDk5MDI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "brand logo"
     },
     {
-      "id": "project-1",
+      "id": "project-coral-spiral",
       "description": "Showcase image for Project One",
       "imageUrl": "https://images.unsplash.com/photo-1758411897998-999b2fe9d8e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb2Rlcm4lMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzU5NTAzMjQ2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern dashboard"
     },
     {
-      "id": "project-2",
+      "id": "project-shopease-redesign",
       "description": "Showcase image for Project Two",
       "imageUrl": "https://images.unsplash.com/photo-1551650975-87deedd944c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzU5NDc4MDc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "mobile app"
     },
     {
-      "id": "project-3",
+      "id": "project-black-prisms",
       "description": "Showcase image for Project Three",
       "imageUrl": "https://images.unsplash.com/photo-1726056652635-7db7a936e7be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZS1jb21tZXJjZSUyMHdlYnNpdGV8ZW58MHx8fHwxNzU5NTQ4OTU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "e-commerce website"
     },
     {
-      "id": "project-4",
+      "id": "project-summer-festival",
       "description": "Showcase image for Project Four",
       "imageUrl": "https://images.unsplash.com/photo-1594322436404-5a0526db4d13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsYW5kaW5nJTIwcGFnZXxlbnwwfHx8fDE3NTk1MzQ2MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "landing page"
     },
     {
-      "id": "client-1",
+      "id": "client-avatar-1",
       "description": "Avatar of Client One",
       "imageUrl": "https://images.unsplash.com/photo-1607529378676-a20456ee2f6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwZXJzb24lMjBzbWlsaW5nfGVufDB8fHx8MTc1OTU0MTgzMnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person smiling"
     },
     {
-      "id": "client-2",
+      "id": "client-avatar-2",
       "description": "Avatar of Client Two",
       "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NTk0ODYwMDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "professional headshot"
     },
     {
-      "id": "client-3",
+      "id": "client-avatar-3",
       "description": "Avatar of Client Three",
       "imageUrl": "https://images.unsplash.com/photo-1507206130118-b5907f817163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjB3b3JraW5nfGVufDB8fHx8MTc1OTU1MTQyNHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person working"

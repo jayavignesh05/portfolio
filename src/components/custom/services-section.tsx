@@ -25,23 +25,23 @@ const services = [
     id: "graphic-design",
     title: "Grab Your Designs",
     description: "Tell me your unique vision, and I’ll create stunning, functional designs that perfectly align with your goals and bring your ideas to life seamlessly.",
-    imageId: "service-branding"
+    imageId: "branding-illustration"
   },
   {
     id: "web-design",
     title: "Kickstart Development",
     description: "I expertly transform your designs into a powerful, scalable solution, fully ready to launch and optimized for performance, usability, and growth.",
-    imageId: "service-web-dev"
+    imageId: "web-development-illustration"
   },
   {
       id: "branding",
       title: "And Hand Over",
       description: "Receive a fully tested, polished, high-quality product tailored to your needs with support for seamless performance and long-term success.",
-      imageId: "project-1"
+      imageId: "project-coral-spiral"
   }
 ];
 
-const DEFAULT_IMAGE_ID = "service-ui-ux";
+const DEFAULT_IMAGE_ID = "strategy-illustration";
 
 export function ServicesSection() {
     const [activeImageId, setActiveImageId] = useState(DEFAULT_IMAGE_ID);

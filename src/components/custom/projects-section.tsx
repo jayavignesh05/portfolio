@@ -14,32 +14,32 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
     {
-        id: "project-4",
+        id: "project-summer-festival",
         title: "Summer Vibes Festival Campaign",
         category: "Graphic Design",
         description: "Created promotional materials for the 'Summer Vibes Festival,' including posters, flyers, and social media graphics.",
-        imageId: "project-4"
+        imageId: "project-summer-festival"
     },
     {
-        id: "project-1",
+        id: "project-coral-spiral",
         title: "Coral Spiral Abstract",
         category: "Branding",
         description: "A visually striking 3D abstract artwork featuring a coral-colored spiral form with smooth, flowing curves and a soft pink gradient background.",
-        imageId: "project-1"
+        imageId: "project-coral-spiral"
     },
     {
-        id: "project-2",
+        id: "project-shopease-redesign",
         title: "Shopease Redesign Sprint",
         category: "UI / UX Design",
         description: "Redesigned the 'Shopease' e-commerce app to enhance user experience. Focused on simplifying navigation and incorporating a sleek look.",
-        imageId: "project-2"
+        imageId: "project-shopease-redesign"
     },
     {
-        id: "project-3",
+        id: "project-black-prisms",
         title: "Black Geometric Prisms",
         category: "Branding",
         description: "A collection of sharp, angular black prisms floating against a dark gradient background, showcasing a modern and sophisticated approach.",
-        imageId: "project-3"
+        imageId: "project-black-prisms"
     },
 ];
 
