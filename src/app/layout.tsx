@@ -6,7 +6,7 @@ import { Footer } from "@/components/custom/footer";
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'VisioFolio',
+  title: 'JV-portfolio',
   description: 'Personal portfolio for a Frontend Developer & UI/UX Designer.',
 };
 

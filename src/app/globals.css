@@ -98,7 +98,7 @@
     width: 100vw;
     height: 100vh;
     background-color: hsla(var(--background), 0.7);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(80px);
     -webkit-backdrop-filter: blur(8px);
     z-index: -1;
   }
