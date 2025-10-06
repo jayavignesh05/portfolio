@@ -65,7 +65,7 @@ export function AboutSection() {
                 <div className="lg:col-span-1">
                     <ProfileCard />
                 </div>
-                <div className="lg:col-span-2 space-y-10">
+                <div className="lg:col-span-2 space-y-8 bg-card/50 backdrop-blur-lg border border-border/30 rounded-2xl p-8 shadow-lg">
                     <div>
                         <h2 className="text-3xl font-bold mb-4">About Me</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ export function AboutSection() {
                     <Separator className="border-dashed" />
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                         {stats.map((stat, index) => (
-                            <div key={index} className="bg-card p-6 rounded-lg border border-border/50 text-center">
+                            <div key={index} className="bg-card/70 p-6 rounded-lg border border-border/50 text-center">
                                 <AnimatedStat stat={stat} />
                             </div>
                         ))}
