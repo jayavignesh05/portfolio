@@ -17,7 +17,7 @@ const stats = [
     {
         value: 15,
         suffix: "+",
-        label: "UI Designs Created",
+        label: "UI Designs",
     },
     {
         value: 500,
