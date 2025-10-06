@@ -44,7 +44,7 @@ export function ProfileCard() {
             
             <div className="flex justify-center gap-4 mb-6">
                  {socialLinks.map((link, index) => (
-                    <Link key={index} href={link.href} className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-white hover:text-primary transition-colors group">
+                    <Link key={index} href={link.href} target='_blank' className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-white hover:text-primary transition-colors group">
                         {link.icon}
                     </Link>
                 ))}
