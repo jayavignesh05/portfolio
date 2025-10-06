@@ -4,14 +4,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Instagram, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { WhatsappIcon } from './whatsapp-icon';
+import { InstagramIcon } from './instagram-icon';
 import { ArrowRight } from 'lucide-react';
 
 const socialLinks = [
-    { name: "instagram", href: "#", icon: <Instagram className="text-white"/> },
-    { name: "whatsapp", href: "#", icon: <Image src="https://img.icons8.com/ios/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width={24} height={24} /> },
+    { name: "instagram", href: "#", icon: <InstagramIcon className="text-white"/> },
+    { name: "whatsapp", href: "#", icon: <WhatsappIcon className="text-white" /> },
     { name: "mail", href: "#", icon: <Mail className="text-white" /> },
 ];
 
