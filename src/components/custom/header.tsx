@@ -37,7 +37,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl ",
+          "mx-auto mt-4 h-24 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl",
           isScrolled && "mt-2"
         )}
       >
