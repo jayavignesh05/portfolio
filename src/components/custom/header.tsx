@@ -32,14 +32,13 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        isScrolled && "bg-background/90"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
       )}
     >
       <div
         className={cn(
-          "mx-auto mt-4 h-24 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl",
-          isScrolled && "mt-2"
+          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl ",
+  
         )}
       >
         <div className="flex items-center justify-between h-full">
