@@ -19,7 +19,7 @@ const services = [
     id: "get-in-touch",
     title: "LET'S GET IN TOUCH",
     description:"Start by reaching out through our contact page. Fill out the form or book a call to discuss your project, goals, and ideas in even greater detail.",
-    imageId: "developer-photo"
+    imageId: "get-in-touch"
   },
   {
     id: "graphic-design",
