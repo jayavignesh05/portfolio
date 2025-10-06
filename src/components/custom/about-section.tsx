@@ -15,19 +15,19 @@ const skills = [
 
 const stats = [
     {
-        value: 12,
-        suffix: "",
-        label: "Years of Experience",
-    },
-    {
-        value: 270,
-        suffix: "",
-        label: "Completed Projects",
-    },
-    {
-        value: 50,
+        value: 15,
         suffix: "+",
-        label: "Clients on Worldwide",
+        label: "UI Designs Created",
+    },
+    {
+        value: 500,
+        suffix: "+",
+        label: "Hours of Coding",
+    },
+    {
+        value: 99,
+        suffix: "+",
+        label: "Cups of Coffee",
     }
 ];
 
