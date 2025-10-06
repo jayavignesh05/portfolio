@@ -11,8 +11,8 @@ import { InstagramIcon } from './instagram-icon';
 import { ArrowRight } from 'lucide-react';
 
 const socialLinks = [
-    { name: "instagram", href: "#", icon: <InstagramIcon className="text-white"/> },
-    { name: "whatsapp", href: "#", icon: <WhatsappIcon className="text-white" /> },
+    { name: "instagram", href: "https://www.instagram.com/_who.is.viki_?igsh=MWtlbmFodXp2bHIwMg==", icon: <InstagramIcon className="text-white"/> },
+    { name: "whatsapp", href: "https://wa.me/qr/TLRMYJTX7LV7C1", icon: <WhatsappIcon className="text-white" /> },
     { name: "mail", href: "#", icon: <Mail className="text-white" /> },
 ];
 

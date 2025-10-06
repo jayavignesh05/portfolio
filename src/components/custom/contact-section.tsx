@@ -17,12 +17,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "@/app/actions";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -30,11 +29,15 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
+// Replace this with your actual WhatsApp number including the country code (e.g., 91xxxxxxxxxx for India)
+const YOUR_WHATSAPP_NUMBER = "911234567890";
+
 export function ContactSection() {
   const { toast } = useToast();
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -71,20 +74,27 @@ export function ContactSection() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const result = await submitContactForm(values);
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: result.message,
-      });
-    }
+    setIsSubmitting(true);
+    
+    const { name, email, message } = values;
+    const whatsappMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    const whatsappUrl = `https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
+    // Simulate a delay to allow the user to send the message
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    setIsSubmitting(false);
+
+    toast({
+      title: "Ready to Send!",
+      description: "Your message has been prepared in WhatsApp.",
+    });
+    form.reset();
   };
 
   return (
@@ -141,8 +151,8 @@ export function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full font-bold" size="lg" disabled={form.formState.isSubmitting}>
-                    {form.formState.isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  <Button type="submit" className="w-full font-bold" size="lg" disabled={isSubmitting}>
+                    {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Submit
                   </Button>
                 </form>

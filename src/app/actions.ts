@@ -1,4 +1,9 @@
+
 "use server";
+
+// This file is no longer used for the contact form submission, 
+// as the logic has been moved to the client-side to open WhatsApp.
+// You can remove this file or repurpose it for other server actions.
 
 import * as z from "zod";
 
@@ -10,16 +15,13 @@ const formSchema = z.object({
 
 export async function submitContactForm(values: z.infer<typeof formSchema>) {
   try {
-    // Here you would typically send an email, save to a database, etc.
-    // For this example, we'll just simulate a successful submission.
-    console.log("Form submitted successfully:", values);
+    // This server action is no longer directly used by the contact form.
+    // The client-side now handles opening WhatsApp.
+    console.log("Form values (not sent):", values);
     
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    return { success: true, message: "Form submitted successfully." };
+    return { success: true, message: "Action executed, but WhatsApp is handled client-side." };
   } catch (error) {
-    console.error("Error submitting form:", error);
-    return { success: false, message: "An unexpected error occurred. Please try again." };
+    console.error("Error in unused form action:", error);
+    return { success: false, message: "An unexpected error occurred." };
   }
 }
