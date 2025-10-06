@@ -157,7 +157,7 @@ export function ContactSection() {
                   data-ai-hint={developerImage.imageHint}
                 />
               )}
-               <div className="absolute inset-0 bg-gradient-to-l from-card to-transparent"></div>
+  
             </div>
           </div>
         </Card>
