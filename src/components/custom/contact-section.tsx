@@ -30,7 +30,7 @@ const formSchema = z.object({
 });
 
 // Replace this with your actual WhatsApp number including the country code (e.g., 91xxxxxxxxxx for India)
-const YOUR_WHATSAPP_NUMBER = "911234567890";
+const YOUR_WHATSAPP_NUMBER = "6374992158";
 
 export function ContactSection() {
   const { toast } = useToast();
