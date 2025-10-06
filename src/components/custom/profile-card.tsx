@@ -10,9 +10,9 @@ import { WhatsappIcon } from './whatsapp-icon';
 import { ArrowRight } from 'lucide-react';
 
 const socialLinks = [
-    { name: "instagram", href: "#", icon: <Instagram /> },
+    { name: "instagram", href: "#", icon: <Instagram className="text-white"/> },
     { name: "whatsapp", href: "#" },
-    { name: "mail", href: "#", icon: <Mail /> },
+    { name: "mail", href: "#", icon: <Mail className="text-white" /> },
 ];
 
 export function ProfileCard() {
@@ -45,7 +45,7 @@ export function ProfileCard() {
                  {socialLinks.map((link, index) => (
                     <Link key={index} href={link.href} className="w-12 h-12 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-muted-foreground hover:text-primary transition-colors group">
                         {link.name === 'whatsapp' ? (
-                            <Image src="https://img.icons8.com/ios/50/whatsapp--v1.png" alt="WhatsApp" width={24} height={24} className="grayscale brightness-200 group-hover:filter-none transition-all" />
+                            <Image src="https://img.icons8.com/ios/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width={24} height={24} className="group-hover:filter-none transition-all" />
                         ) : (
                             link.icon
                         )}
@@ -62,4 +62,3 @@ export function ProfileCard() {
         </div>
     );
 }
-
