@@ -7,6 +7,14 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'bg-background/50',
+    'backdrop-blur-lg',
+    'border-border/30',
+    'rounded-full',
+    'shadow-lg',
+    'shadow-primary/5',
+  ],
   theme: {
     container: {
       center: true,
