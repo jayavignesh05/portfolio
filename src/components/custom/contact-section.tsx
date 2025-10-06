@@ -29,7 +29,7 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
-// Replace this with your actual WhatsApp number including the country code (e.g., 91xxxxxxxxxx for India)
+
 const YOUR_WHATSAPP_NUMBER = "6374992158";
 
 export function ContactSection() {
