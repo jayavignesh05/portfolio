@@ -84,7 +84,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('../../public/assets/black.jpg');
+    background-image: url('/assets/black.jpg'); /* <-- Ippo sari panniyachu */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -109,7 +109,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url('../../public/assets/black.jpg');
+    background-image: url('/assets/black.jpg'); /* <-- Idhayum sari panniyachu */
     background-size: 200px;
     opacity: 0.05;
     pointer-events: none;
