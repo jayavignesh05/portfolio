@@ -91,7 +91,7 @@ export function HeroSection() {
   return (
     <section id="home" ref={ref} className="container mx-auto px-4 min-h-screen flex items-center justify-center pt-28 pb-10">
       <motion.div 
-        className="w-full text-center"
+        className="w-full text-left sm:text-center"
         initial="hidden"
         animate={controls}
         variants={{
