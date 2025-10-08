@@ -7,10 +7,16 @@ import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
 
 export function Header() {
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,36 +43,78 @@ export function Header() {
     >
       <div
         className={cn(
-          "h-20 mx-auto mt-4 px-5 md:px-8 bg-background/50 backdrop-blur-lg border border-border/30 rounded-full transition-all duration-300 ease-in-out shadow-lg shadow-primary/5 max-w-5xl ",
-  
+          "mx-auto mt-4 flex items-center justify-between transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5",
+          isScrolled || isMobile
+            ? "max-w-xs rounded-full h-14 px-4"
+            : "max-w-5xl rounded-full h-20 px-5 md:px-8"
         )}
       >
-        <div className="flex items-center justify-between h-full">
-           <Link href="#home">
-              <Avatar className="h-10 w-10 border-2 border-primary">
-                {developerImage && <AvatarImage src={developerImage.imageUrl} alt="Developer" />}
-                <AvatarFallback>V</AvatarFallback>
-              </Avatar>
-            </Link>
+        <Link href="#home">
+          <Avatar className={cn("h-10 w-10 border-2 border-primary transition-all", isScrolled && !isMobile ? "h-8 w-8" : "")}>
+            {developerImage && <AvatarImage src={developerImage.imageUrl} alt="Developer" />}
+            <AvatarFallback>V</AvatarFallback>
+          </Avatar>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-10">
-            {menuLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-semibold text-base"
-              >
-                {link.name}
+        {isMobile ? (
+          <>
+             <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-xs font-semibold">Available for work</span>
+            </div>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="w-8 h-8">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="top" className="w-full">
+                <nav className="flex flex-col items-center gap-6 pt-12">
+                  {menuLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-foreground/80 hover:text-primary transition-colors font-semibold text-lg"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </>
+        ) : (
+          <>
+            <nav className={cn("hidden md:flex items-center gap-10", isScrolled ? "hidden" : "flex")}>
+              {menuLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-foreground/80 hover:text-primary transition-colors font-semibold text-base"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+            <div className={cn("hidden items-center gap-2", isScrolled ? "flex" : "hidden")}>
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-xs font-semibold">Available for work</span>
+            </div>
+            <Button asChild className="font-bold text-base rounded-full" size={isScrolled ? "sm" : "lg"}>
+              <Link href="#contact" className="flex items-center gap-2">
+                <span>Contact</span>
               </Link>
-            ))}
-          </nav>
-          
-          <Button asChild className="font-bold text-base rounded-full" size="lg">
-            <Link href="#contact" className="flex items-center gap-2">
-              <span>Contact</span>
-            </Link>
-          </Button>
-        </div>
+            </Button>
+          </>
+        )}
       </div>
     </header>
   );
