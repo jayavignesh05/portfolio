@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { DecryptedText } from "./decrypted-text";
 
 const projects = [
     {
@@ -21,7 +22,7 @@ const projects = [
         id: "project-coral-spiral",
         title: "Coral Spiral Abstract",
         category: "Branding",
-        description: "A visually striking 3D abstract artwork featuring a coral-colored spiral form with smooth, flowing curves and a soft pink gradient background.",
+        description: "A visually striking 3D abstract artwork featuring a coral-colored spiral form with a soft pink gradient background.",
         imageId: "project-coral-spiral"
     },
     {
@@ -66,7 +67,9 @@ export function ProjectsSection() {
         <section id="projects" className="bg-background">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Featured Projects</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                        <DecryptedText text="Featured Projects" />
+                    </h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
