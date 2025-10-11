@@ -7,55 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
-
-const AnimatedTextCharacter = ({ text, className }: { text: string, className?: string }) => {
-  const letters = text.split("");
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.05, delayChildren: 0.2 * i },
-    }),
-  };
-
-  const child = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  return (
-    <motion.div
-      className={cn("inline-block", className)}
-      variants={container}
-      initial="hidden"
-      animate="visible"
-    >
-      {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} className="inline-block">
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
-
+import BlurText from "./blur-text";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -109,15 +61,15 @@ export function HeroSection() {
             Dedicated to top-notch design, <br /> I am a
         </motion.p>
         <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
-          <div className="block">
-            <AnimatedTextCharacter text="UI/UX " />
-            <AnimatedTextCharacter text="Designer" className="text-primary" />
-            <AnimatedTextCharacter text=" &" />
-          </div>
-          <div className="block">
-            <AnimatedTextCharacter text="Frontend " />
-            <AnimatedTextCharacter text="Developer" className="text-primary" />
-          </div>
+           <span className="block">
+              <BlurText text="UI/UX " animateBy="words" delay={50} />
+              <BlurText text="Designer" className="text-primary" animateBy="words" delay={50} />
+              <BlurText text=" &" animateBy="words" delay={50} />
+           </span>
+           <span className="block">
+              <BlurText text="Frontend " animateBy="words" delay={50} />
+              <BlurText text="Developer" className="text-primary" animateBy="words" delay={50} />
+            </span>
         </h1>
         <motion.p 
           className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
