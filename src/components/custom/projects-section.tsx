@@ -7,10 +7,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
     {
@@ -43,36 +40,6 @@ const projects = [
     },
 ];
 
-function DesktopProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
-    const image = PlaceHolderImages.find(p => p.id === project.imageId);
-
-    const entranceRangeStart = (index - 1) / totalProjects;
-    const entranceRangeEnd = index / totalProjects;
-    const y = useTransform(scrollYProgress, [entranceRangeStart, entranceRangeEnd], ["100%", "0%"]);
-
-    const exitRangeStart = index / totalProjects;
-    const exitRangeEnd = (index + 1) / totalProjects;
-
-    const rotateX = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [0, -15]);
-    const scale = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [1, 0.9]);
-
-    return (
-        <motion.div
-            style={{
-                y,
-                scale,
-                rotateX,
-                zIndex: index,
-            }}
-            className="absolute top-0 left-0 w-full h-full"
-        >
-            <div className="flex h-full w-full items-center justify-center">
-                 <ProjectCardContent project={project} />
-            </div>
-        </motion.div>
-    );
-}
-
 function ProjectCardContent({ project }: { project: any }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
     return (
@@ -95,19 +62,6 @@ function ProjectCardContent({ project }: { project: any }) {
 
 
 export function ProjectsSection() {
-    const ref = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"]
-    });
-    const isMobile = useIsMobile();
-
-    const smoothScrollYProgress = useSpring(scrollYProgress, {
-        mass: 0.1,
-        stiffness: 80,
-        damping: 20,
-    });
-
     return (
         <section id="projects" className="bg-background">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
@@ -116,41 +70,20 @@ export function ProjectsSection() {
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                {isMobile ? (
-                     <Carousel opts={{ align: "start", loop: true, }} className="w-full max-w-4xl mx-auto">
-                        <CarouselContent>
-                            {projects.map((project) => (
-                                <CarouselItem key={project.id}>
-                                    <div className="p-1">
-                                        <ProjectCardContent project={project} />
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
-                        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
-                    </Carousel>
-                ) : (
-                    <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-                        <div
-                            className="sticky top-28 h-screen overflow-hidden"
-                            style={{ perspective: '1000px' }}
-                        >
-                            {projects.map((project, index) => (
-                                <DesktopProjectCard
-                                    key={project.id}
-                                    project={project}
-                                    index={index}
-                                    scrollYProgress={smoothScrollYProgress}
-                                    totalProjects={projects.length}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                )}
+                 <Carousel opts={{ align: "start", loop: true, }} className="w-full max-w-4xl mx-auto">
+                    <CarouselContent>
+                        {projects.map((project) => (
+                            <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/1">
+                                <div className="p-1">
+                                    <ProjectCardContent project={project} />
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden md:flex" />
+                    <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden md:flex" />
+                </Carousel>
             </div>
         </section>
     );
 }
-
-
