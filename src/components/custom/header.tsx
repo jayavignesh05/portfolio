@@ -10,6 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function Header() {
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
@@ -26,7 +27,7 @@ export function Header() {
   
   useEffect(() => {
     const handleScroll = () => {
-      let currentSection = "";
+      let currentSection = "#home";
       menuLinks.forEach(link => {
         const section = document.querySelector(link.href) as HTMLElement;
         if (section) {
@@ -107,17 +108,24 @@ export function Header() {
           </>
         ) : (
           <>
-            <nav className="flex items-center gap-10">
+            <nav className="relative flex items-center gap-2">
               {menuLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "transition-colors font-semibold text-base",
-                    activeLink === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
+                    "relative transition-colors font-semibold text-base px-4 py-2 rounded-full",
+                    activeLink === link.href ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
                   )}
                 >
                   {link.name}
+                  {activeLink === link.href && (
+                    <motion.div
+                      layoutId="active-nav-link"
+                      className="absolute inset-0 bg-primary rounded-full -z-10"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
                 </Link>
               ))}
             </nav>
