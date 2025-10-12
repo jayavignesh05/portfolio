@@ -7,7 +7,8 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { DecryptedText } from "./decrypted-text";
 
 const projects = [
@@ -41,51 +42,90 @@ const projects = [
     },
 ];
 
-function ProjectCardContent({ project }: { project: any }) {
+function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
+
+    // Stagger the entrance of each card
+    const entranceRangeStart = (index - 1) / totalProjects;
+    const entranceRangeEnd = index / totalProjects;
+    const y = useTransform(scrollYProgress, [entranceRangeStart, entranceRangeEnd], ["100%", "0%"]);
+
+    const exitRangeStart = index / totalProjects;
+    const exitRangeEnd = (index + 0.5) / totalProjects;
+    
+    // Animate rotation and scale on exit
+    const rotateX = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [0, -15]);
+    const scale = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [1, 0.9]);
+
     return (
-        <div className="group relative w-full max-w-5xl aspect-[13/8] rounded-2xl overflow-hidden bg-card border border-border/50 ">
-            {image && (
-                <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent " />
-            <div className="absolute bottom-0 left-0 p-8 text-white w-full">
-                <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
-                <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
-                <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
-                <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
-                    <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
+        <motion.div
+            style={{
+                y,
+                scale,
+                rotateX,
+                zIndex: totalProjects - index, // Stack cards correctly
+            }}
+            className="absolute top-0 left-0 w-full h-full"
+        >
+            <div className="flex h-full w-full items-center justify-center">
+                <div className="group relative w-full max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50">
+                    {image && (
+                        <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                        <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
+                        <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
+                        <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
+                        <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
+                            <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                        </Button>
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        </motion.div>
+    );
 }
 
-
 export function ProjectsSection() {
+    const ref = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end end"]
+    });
+    
+    const smoothScrollYProgress = useSpring(scrollYProgress, {
+        mass: 0.1,
+        stiffness: 80,
+        damping: 20,
+    });
+
     return (
         <section id="projects" className="bg-background">
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                         <DecryptedText text="Featured Projects" />
                     </h2>
                     <p className="text-lg text-muted-foreground mt-4">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                 <Carousel opts={{ align: "start", loop: true, }} className="w-full max-w-4xl mx-auto">
-                    <CarouselContent>
-                        {projects.map((project) => (
-                            <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/1">
-                                <div className="p-1">
-                                    <ProjectCardContent project={project} />
-                                </div>
-                            </CarouselItem>
+                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
+                    <div
+                        className="sticky top-28 h-screen overflow-hidden"
+                        style={{ perspective: '1000px' }}
+                    >
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={project.id}
+                                project={project}
+                                index={index}
+                                scrollYProgress={smoothScrollYProgress}
+                                totalProjects={projects.length}
+                            />
                         ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2 hidden md:flex" />
-                    <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2 hidden md:flex" />
-                </Carousel>
+                    </div>
+                </div>
             </div>
         </section>
     );
