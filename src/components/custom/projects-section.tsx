@@ -63,7 +63,7 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
                 y,
                 scale,
                 rotateX,
-                zIndex: totalProjects - index, // Stack cards correctly
+                zIndex: index, // Stack cards correctly
             }}
             className="absolute top-0 left-0 w-full h-full"
         >
