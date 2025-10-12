@@ -15,6 +15,7 @@ export function Header() {
   const developerImage = PlaceHolderImages.find(p => p.id === "developer-photo");
   const isMobile = useIsMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("#home");
 
   const menuLinks = [
     { name: "Home", href: "#home" },
@@ -22,6 +23,31 @@ export function Header() {
     { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
   ];
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      let currentSection = "";
+      menuLinks.forEach(link => {
+        const section = document.querySelector(link.href) as HTMLElement;
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (window.scrollY >= sectionTop - 150 && window.scrollY < sectionTop + sectionHeight - 150) {
+            currentSection = link.href;
+          }
+        }
+      });
+
+      if (currentSection !== activeLink) {
+        setActiveLink(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeLink, menuLinks]);
 
   return (
     <header
@@ -66,7 +92,10 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="text-foreground/80 hover:text-primary transition-colors font-semibold text-lg"
+                      className={cn(
+                        "transition-colors font-semibold text-lg",
+                        activeLink === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
+                      )}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.name}
@@ -83,7 +112,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-foreground/80 hover:text-primary transition-colors font-semibold text-base"
+                  className={cn(
+                    "transition-colors font-semibold text-base",
+                    activeLink === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
+                  )}
                 >
                   {link.name}
                 </Link>
