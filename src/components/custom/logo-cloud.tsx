@@ -30,7 +30,7 @@ export function LogoCloud() {
               "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
           }}
         >
-          <div className="animate-scroll-x flex items-center justify-center md:justify-start gap-8 md:gap-16">
+          <div className="animate-scroll-x flex items-center gap-8 md:gap-16">
             {logos.concat(logos).map((logo, index) => (
               <div
                 key={index}

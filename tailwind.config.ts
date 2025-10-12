@@ -114,8 +114,8 @@ export default {
           to: { transform: 'rotate(360deg)' },
         },
         'scroll-x': {
-            '0%': { transform: 'translateX(0)' },
-            '100%': { transform: 'translateX(-50%)' },
+            from: { transform: 'translateX(0)' },
+            to: { transform: 'translateX(-50%)' },
         }
       },
       animation: {
