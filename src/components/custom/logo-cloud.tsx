@@ -1,10 +1,11 @@
+
 "use client";
 
 import {
   Figma,
   Github,
 } from "lucide-react";
-import { ImHtml5 } from "react-icons/im";
+import { ImHtmlFive } from "react-icons/im";
 
 const logos = [
   { icon: <Figma className="h-12 w-12" />, name: "Figma" },
@@ -12,7 +13,7 @@ const logos = [
   { icon: <ReactIcon className="h-12 w-12" />, name: "React" },
   { icon: <TypeScriptIcon className="h-12 w-12" />, name: "TypeScript" },
   { icon: <JavaScriptIcon className="h-12 w-12" />, name: "JavaScript" },
-  { icon: <ImHtml5 className="h-12 w-12" />, name: "HTML5" },
+  { icon: <ImHtmlFive className="h-12 w-12" />, name: "HTML5" },
   { icon: <CSS3Icon className="h-12 w-12" />, name: "CSS3" },
 ];
 
