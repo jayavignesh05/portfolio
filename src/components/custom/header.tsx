@@ -27,19 +27,23 @@ export function Header() {
   
   useEffect(() => {
     const handleScroll = () => {
-      let currentSection = "#home";
+      let currentSection = "";
       menuLinks.forEach(link => {
         const section = document.querySelector(link.href) as HTMLElement;
         if (section) {
           const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          if (window.scrollY >= sectionTop - 150 && window.scrollY < sectionTop + sectionHeight - 150) {
+          if (window.scrollY >= sectionTop - 150) {
             currentSection = link.href;
           }
         }
       });
+      
+      // If no section is matched (e.g., at the very top), default to home
+      if (currentSection === "" && window.scrollY < 200) {
+        currentSection = "#home";
+      }
 
-      if (currentSection !== activeLink) {
+      if (currentSection && currentSection !== activeLink) {
         setActiveLink(currentSection);
       }
     };
