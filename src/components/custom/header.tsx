@@ -28,17 +28,15 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       let currentSection = "";
-      menuLinks.forEach(link => {
+      for (let i = menuLinks.length - 1; i >= 0; i--) {
+        const link = menuLinks[i];
         const section = document.querySelector(link.href) as HTMLElement;
-        if (section) {
-          const sectionTop = section.offsetTop;
-          if (window.scrollY >= sectionTop - 150) {
-            currentSection = link.href;
-          }
+        if (section && window.scrollY >= section.offsetTop - 150) {
+          currentSection = link.href;
+          break; 
         }
-      });
+      }
       
-      // If no section is matched (e.g., at the very top), default to home
       if (currentSection === "" && window.scrollY < 200) {
         currentSection = "#home";
       }
@@ -133,11 +131,13 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            <Button asChild className="font-bold text-base rounded-full" size="lg">
-              <Link href="#contact" className="flex items-center gap-2">
-                <span>Contact</span>
-              </Link>
-            </Button>
+            <motion.div whileHover={{ y: -4, rotate: -2 }}>
+              <Button asChild className="font-bold text-base rounded-full" size="lg">
+                <Link href="#contact" className="flex items-center gap-2">
+                  <span>Contact</span>
+                </Link>
+              </Button>
+            </motion.div>
           </>
         )}
       </div>
