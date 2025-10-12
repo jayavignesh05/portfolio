@@ -4,6 +4,7 @@ import {
   Figma,
   Github,
 } from "lucide-react";
+import { ImHtml5 } from "react-icons/im";
 
 const logos = [
   { icon: <Figma className="h-12 w-12" />, name: "Figma" },
@@ -11,7 +12,7 @@ const logos = [
   { icon: <ReactIcon className="h-12 w-12" />, name: "React" },
   { icon: <TypeScriptIcon className="h-12 w-12" />, name: "TypeScript" },
   { icon: <JavaScriptIcon className="h-12 w-12" />, name: "JavaScript" },
-  { icon: <HTML5Icon className="h-12 w-12" />, name: "HTML5" },
+  { icon: <ImHtml5 className="h-12 w-12" />, name: "HTML5" },
   { icon: <CSS3Icon className="h-12 w-12" />, name: "CSS3" },
 ];
 
@@ -83,19 +84,6 @@ function JavaScriptIcon(props: React.SVGProps<SVGSVGElement>) {
       fill="currentColor"
     >
       <path d="M0 0h24v24H0V0zm22.034 18.262h-2.646v-2.016h2.646v2.016zm-5.292 0h-2.646v-2.016h2.646v2.016zm-5.292 0H8.804v-4.032h2.646v4.032zm-2.646-4.032H6.158v-2.016h2.646v2.016zm5.292 2.016h-2.646v-2.016h2.646v2.016zm-2.646-4.032h-2.646v-2.016h2.646v2.016z" />
-    </svg>
-  );
-}
-
-function HTML5Icon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.361 5.928h4.256l-.336 3.784h-3.92l.224 2.512h3.472l-.336 3.784-3.136.84-3.136-.84-.224-2.512H7.36l-.336-3.784h7.328l.672-7.568H4.137l.736 8.352h7.328l-.224 2.512-2.128.576-2.128-.576-.144-1.616H5.58l-.448 5.024 6.848 1.896 6.848-1.896.944-10.576H8.805l-.336-3.784h8.288l.336-3.784h-12.72l.448 5.024z" />
     </svg>
   );
 }
