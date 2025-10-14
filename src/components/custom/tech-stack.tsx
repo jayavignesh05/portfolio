@@ -24,18 +24,18 @@ export function TechStack() {
                 <h2 className="text-3xl font-bold tracking-tight">Tools & Technologies</h2>
                 <p className="text-lg text-muted-foreground mt-2">A look at the modern tools I use to build digital experiences.</p>
             </div>
-            <LogoLoop
-                logos={techLogos}
-                speed={100}
-                direction="left"
-                logoHeight={40}
-                gap={60}
-                pauseOnHover
-                scaleOnHover
-                fadeOut
-                ariaLabel="Technology partners"
-            />
         </div>
+        <LogoLoop
+            logos={techLogos}
+            speed={100}
+            direction="left"
+            logoHeight={40}
+            gap={60}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            ariaLabel="Technology partners"
+        />
     </section>
   );
 }
