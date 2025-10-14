@@ -19,7 +19,7 @@ const techLogos = [
 export function TechStack() {
   return (
     <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-center">
             <div className="flex flex-col items-center text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tight">Tools & Technologies</h2>
                 <p className="text-lg text-muted-foreground mt-2">A look at the modern tools I use to build digital experiences.</p>
@@ -33,9 +33,10 @@ export function TechStack() {
             gap={60}
             pauseOnHover
             scaleOnHover
-            fadeOut
+            fadeOut={false}
             ariaLabel="Technology partners"
         />
     </section>
   );
 }
+
