@@ -35,7 +35,7 @@ export function LogoCloud() {
             {logos.concat(logos).map((logo, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="flex-shrink-0 flex items-center text-muted-foreground hover:text-foreground transition-colors"
                 title={logo.name}
               >
                 {logo.icon}
