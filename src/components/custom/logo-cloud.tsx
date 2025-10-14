@@ -6,7 +6,7 @@ import {
   Github,
 } from "lucide-react";
 import { ImHtmlFive } from "react-icons/im";
-import { FaCss3Alt } from "react-icons/fa";
+import { FaCss3Alt, FaJsSquare } from "react-icons/fa";
 import { SiTypescript, SiTailwindcss } from "react-icons/si";
 
 const logos = [
@@ -14,6 +14,7 @@ const logos = [
   { icon: <Github className="h-12 w-12" />, name: "Github" },
   { icon: <ReactIcon className="h-12 w-12" />, name: "React" },
   { icon: <SiTypescript className="h-12 w-12" />, name: "TypeScript" },
+  { icon: <FaJsSquare className="h-12 w-12" />, name: "JavaScript" },
   { icon: <ImHtmlFive className="h-12 w-12" />, name: "HTML5" },
   { icon: <FaCss3Alt className="h-12 w-12" />, name: "CSS3" },
   { icon: <SiTailwindcss className="h-12 w-12" />, name: "Tailwind CSS" },
