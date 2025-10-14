@@ -89,11 +89,6 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
 
 export function ProjectsSection() {
     const ref = useRef<HTMLDivElement>(null);
-    const [randomSeed, setRandomSeed] = useState<number | null>(null);
-
-    useEffect(() => {
-        setRandomSeed(Math.floor(Math.random() * 1000));
-    }, []);
 
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -111,7 +106,7 @@ export function ProjectsSection() {
             id="projects" 
             className="bg-background relative bg-cover bg-center bg-fixed"
             style={{
-                backgroundImage: randomSeed !== null ? `url(https://picsum.photos/seed/${randomSeed}/1920/1080)`: 'none',
+                backgroundImage: `url('/assets/project.jpg')`,
             }}
         >
             <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
