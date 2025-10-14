@@ -110,11 +110,11 @@ export function ProjectsSection() {
             }}
         >
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
-                <div className="text-center mb-16 max-w-2xl mx-auto">
+                <div className="text-center mb-12">
                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black">
                         <DecryptedText text="Featured Projects" />
                     </h2>
-                    <p className="text-lg text-muted-foreground mt-4 text-black">A selection of my work that showcases my skills and creativity.</p>
+                    <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto text-black">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
                 <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
