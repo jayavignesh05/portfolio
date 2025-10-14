@@ -109,7 +109,6 @@ export function ProjectsSection() {
                 backgroundImage: `url('/assets/project.jpg')`,
             }}
         >
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
