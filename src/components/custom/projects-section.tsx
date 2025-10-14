@@ -7,7 +7,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { DecryptedText } from "./decrypted-text";
 
@@ -89,6 +89,12 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
 
 export function ProjectsSection() {
     const ref = useRef<HTMLDivElement>(null);
+    const [randomSeed, setRandomSeed] = useState<number | null>(null);
+
+    useEffect(() => {
+        setRandomSeed(Math.floor(Math.random() * 1000));
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"]
@@ -101,8 +107,15 @@ export function ProjectsSection() {
     });
 
     return (
-        <section id="projects" className="bg-background">
-            <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24">
+        <section 
+            id="projects" 
+            className="bg-background relative bg-cover bg-center bg-fixed"
+            style={{
+                backgroundImage: randomSeed !== null ? `url(https://picsum.photos/seed/${randomSeed}/1920/1080)`: 'none',
+            }}
+        >
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+            <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                      <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
                         <DecryptedText text="Featured Projects" />
