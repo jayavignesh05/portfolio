@@ -84,33 +84,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('/assets/black.jpg'); /* <-- Ippo sari panniyachu */
+    background-image: url('/assets/black.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('/assets/black.jpg'); /* <-- Idhayum sari panniyachu */
-    background-size: 200px;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: -1;
   }
   section {
     @apply w-full py-16 sm:py-20 md:py-24;
