@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/custom/about-section";
 import { ProjectsSection } from "@/components/custom/projects-section";
 import { ContactSection } from "@/components/custom/contact-section";
 import { useEffect, useState } from "react";
+import { TechStack } from "@/components/custom/tech-stack";
 
 export default function Home() {
 
@@ -16,6 +17,7 @@ export default function Home() {
       <ServicesSection />
       <AboutSection />
       <ProjectsSection />
+      <TechStack />
       <ContactSection />
     </>
   );
