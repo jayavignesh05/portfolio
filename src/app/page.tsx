@@ -8,7 +8,7 @@ import { ProjectsSection } from "@/components/custom/projects-section";
 import { ContactSection } from "@/components/custom/contact-section";
 import { useEffect, useState } from "react";
 import { TechStack } from "@/components/custom/tech-stack";
-import Image from "next/image";
+import { ZoomOnScrollImage } from "@/components/custom/zoom-on-scroll-image";
 
 export default function Home() {
 
@@ -16,14 +16,7 @@ export default function Home() {
     <>
       <HeroSection />
       <ServicesSection />
-       <div className="relative w-full h-[600px]">
-        <Image
-          src="/assets/hands.avif"
-          alt="Hands typing on a laptop"
-          layout="fill"
-          objectFit="cover"
-        />
-      </div>
+      <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
       <div className="bg-background">
         <AboutSection />
         <ProjectsSection />
