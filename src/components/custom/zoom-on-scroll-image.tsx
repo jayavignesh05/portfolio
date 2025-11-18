@@ -12,7 +12,7 @@ export function ZoomOnScrollImage({ src, alt }: { src: string; alt: string }) {
     offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.15, 0.85]);
 
   return (
     <div ref={containerRef} className="relative w-full h-[1000px] overflow-hidden">
