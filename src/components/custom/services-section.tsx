@@ -102,7 +102,7 @@ export function ServicesSection() {
                     <div className="md:col-span-3 relative">
                         <div className="text-center mb-16">
                             <p className="text-base uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
-                            <h2 className="text-6xl md:text-7xl font-black uppercase text-primary tracking-tighter">Discover My Method</h2>
+                            <h2 className="text-6xl md:text-7xl font-black uppercase text-primary tracking-tighter">Discover <span className="text-foreground">My</span> Method</h2>
                         </div>
                         <div className="space-y-12">
                             {processSteps.map((step, index) => (
