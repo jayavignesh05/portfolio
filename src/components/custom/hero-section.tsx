@@ -41,7 +41,7 @@ export function HeroSection() {
   }, [controls]);
 
   return (
-    <section id="home" ref={ref} className="container mx-auto px-4 min-h-screen flex items-center justify-center pt-28 pb-10">
+    <section id="home" ref={ref} className="container mx-auto px-4 min-h-screen flex items-center justify-center">
       <motion.div 
         className="w-full text-left sm:text-center"
         initial="hidden"

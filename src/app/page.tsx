@@ -15,10 +15,12 @@ export default function Home() {
     <>
       <HeroSection />
       <ServicesSection />
-      <AboutSection />
-      <ProjectsSection />
-      <TechStack />
-      <ContactSection />
+      <div className="bg-background">
+        <AboutSection />
+        <ProjectsSection />
+        <TechStack />
+        <ContactSection />
+      </div>
     </>
   );
 }

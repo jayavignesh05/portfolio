@@ -91,7 +91,7 @@
     position: relative;
   }
   section {
-    @apply w-full py-16 sm:py-20 md:py-24;
+    @apply w-full py-16 sm:py-20 md:py-24 bg-transparent;
   }
 }
 
