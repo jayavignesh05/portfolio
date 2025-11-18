@@ -117,7 +117,7 @@ export function ServicesSection() {
                     </div>
                     <div className="md:col-span-2 hidden md:block">
                         <div className="sticky top-28">
-                            <div className="relative w-full aspect-square">
+                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
                                 {image && (
                                     <Image
                                         src={image.imageUrl}
