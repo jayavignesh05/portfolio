@@ -84,21 +84,6 @@ export function ServicesSection() {
         <section id="services" ref={ref} className={cn("min-h-screen w-full py-16 sm:py-20 md:py-24 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
             <div className="container mx-auto px-4 h-full">
                 <div className="grid md:grid-cols-5 md:gap-16">
-                    <div className="md:col-span-2 hidden md:block">
-                        <div className="sticky top-28">
-                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
-                                {image && (
-                                    <Image
-                                        src={image.imageUrl}
-                                        alt={image.description}
-                                        fill
-                                        className="object-cover"
-                                        data-ai-hint={image.imageHint}
-                                    />
-                                )}
-                            </div>
-                        </div>
-                    </div>
                     <div className="md:col-span-3 relative">
                         <div className="text-center mb-16">
                             <p className="text-base uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
@@ -128,6 +113,21 @@ export function ServicesSection() {
                         </div>
                          <div className="absolute bottom-0 right-0">
                             <p className="text-xs text-muted-foreground/50">Made in Framer</p>
+                        </div>
+                    </div>
+                    <div className="md:col-span-2 hidden md:block">
+                        <div className="sticky top-28">
+                            <div className="relative w-full aspect-square">
+                                {image && (
+                                    <Image
+                                        src={image.imageUrl}
+                                        alt={image.description}
+                                        fill
+                                        className="object-cover"
+                                        data-ai-hint={image.imageHint}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
