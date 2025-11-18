@@ -85,7 +85,7 @@ export function ServicesSection() {
             <div className="container mx-auto px-4 h-full">
                 <div className="grid md:grid-cols-5 md:gap-16">
                     <div className="md:col-span-2 hidden md:block">
-                        <div className="sticky top-28 h-[calc(100vh-7rem)]">
+                        <div className="sticky top-28">
                             <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
                                 {image && (
                                     <Image
@@ -101,24 +101,24 @@ export function ServicesSection() {
                     </div>
                     <div className="md:col-span-3 relative">
                         <div className="text-center mb-16">
-                            <p className="text-sm uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
-                            <h2 className="text-5xl md:text-6xl font-black uppercase text-white tracking-tighter">Discover My Method</h2>
+                            <p className="text-base uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
+                            <h2 className="text-6xl md:text-7xl font-black uppercase text-white tracking-tighter">Discover My Method</h2>
                         </div>
                         <div className="space-y-12">
                             {processSteps.map((step, index) => (
                                 <div key={index} className="space-y-4">
                                     <div className="flex items-center gap-4">
-                                        <span className="text-sm text-muted-foreground font-mono">{step.number}</span>
-                                        <h3 className="text-xl font-bold uppercase text-white tracking-wider flex-grow">{step.title}</h3>
+                                        <span className="text-base text-muted-foreground font-mono">{step.number}</span>
+                                        <h3 className="text-3xl font-bold uppercase text-white tracking-wider flex-grow">{step.title}</h3>
                                         <DecorativeIcon />
                                     </div>
-                                    <div className="pl-[5.5rem]">
-                                        <p className="text-muted-foreground leading-relaxed mb-4">{step.description}</p>
+                                    <div className="pl-[6.5rem]">
+                                        <p className="text-lg text-muted-foreground leading-relaxed mb-4">{step.description}</p>
                                         <ul className="space-y-2">
                                             {step.bullets.map((bullet, i) => (
                                                 <li key={i} className="flex items-start">
                                                     <span className="text-muted-foreground/50 mr-3 mt-1.5">&#x25CF;</span>
-                                                    <span className="text-white flex-1">{bullet}</span>
+                                                    <span className="text-lg text-white flex-1">{bullet}</span>
                                                 </li>
                                             ))}
                                         </ul>
