@@ -86,7 +86,7 @@ export function ServicesSection() {
                 <div className="grid md:grid-cols-5 md:gap-16">
                     <div className="md:col-span-2 hidden md:block">
                         <div className="sticky top-28 h-[calc(100vh-7rem)]">
-                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden h-full">
+                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
                                 {image && (
                                     <Image
                                         src={image.imageUrl}
