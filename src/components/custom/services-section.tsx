@@ -111,9 +111,6 @@ export function ServicesSection() {
                                 </div>
                             ))}
                         </div>
-                         <div className="absolute bottom-0 right-0">
-                            <p className="text-xs text-muted-foreground/50">Made in Framer</p>
-                        </div>
                     </div>
                     <div className="md:col-span-2 hidden md:block">
                         <div className="sticky top-28">
