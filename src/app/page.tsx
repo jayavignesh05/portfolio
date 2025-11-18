@@ -16,9 +16,9 @@ export default function Home() {
     <>
       <HeroSection />
       <ServicesSection />
-       <div className="relative w-full h-96">
+       <div className="relative w-full h-[600px]">
         <Image
-          src="/assets/hands.jpg"
+          src="/assets/hands.avif"
           alt="Hands typing on a laptop"
           layout="fill"
           objectFit="cover"
