@@ -17,10 +17,8 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
-      <div className="projects-tech-stack-bg">
-        <ProjectsSection />
-        <TechStack />
-      </div>
+      <ProjectsSection />
+      <TechStack />
       <AboutSection />
       <div className="bg-background">
         <ContactSection />
