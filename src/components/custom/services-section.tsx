@@ -50,10 +50,9 @@ const DecorativeIcon = () => (
     </svg>
 )
 
-export function ServicesSection() {
+function AnimatedSection({ children, className }: { children: React.ReactNode, className?: string }) {
     const ref = useRef<HTMLDivElement>(null);
     const [inView, setInView] = useState(false);
-    const image = PlaceHolderImages.find(p => p.id === 'strategy-illustration');
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -81,40 +80,60 @@ export function ServicesSection() {
     }, []);
 
     return (
-        <section id="services" ref={ref} className={cn("min-h-screen w-full py-16 sm:py-20 md:py-24 transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
+        <div ref={ref} className={cn("transition-all duration-1000 ease-out", inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8", className)}>
+            {children}
+        </div>
+    );
+}
+
+function ProcessStep({ step }: { step: (typeof processSteps)[0] }) {
+    return (
+        <AnimatedSection>
+            <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                    <span className="text-base text-muted-foreground font-mono">{step.number}</span>
+                    <h3 className="text-3xl font-bold uppercase text-primary tracking-wider flex-grow">{step.title}</h3>
+                    <DecorativeIcon />
+                </div>
+                <div className="pl-[6.5rem]">
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-4">{step.description}</p>
+                    <ul className="space-y-2">
+                        {step.bullets.map((bullet, i) => (
+                            <li key={i} className="flex items-start">
+                                <span className="text-muted-foreground/50 mr-3 mt-1.5">&#x25CF;</span>
+                                <span className="text-lg text-white flex-1">{bullet}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </AnimatedSection>
+    );
+}
+
+
+export function ServicesSection() {
+    const image = PlaceHolderImages.find(p => p.id === 'strategy-illustration');
+
+    return (
+        <section id="services" className="min-h-screen w-full py-16 sm:py-20 md:py-24">
             <div className="container mx-auto px-4 h-full">
                 <div className="grid md:grid-cols-5 md:gap-16">
                     <div className="md:col-span-3 relative">
-                        <div className="text-center mb-16">
+                        <AnimatedSection className="text-center mb-16">
                             <p className="text-base uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
                             <h2 className="text-6xl md:text-7xl font-black uppercase text-primary tracking-tighter">Discover <span className="text-foreground">My</span> Method</h2>
-                        </div>
+                        </AnimatedSection>
                         <div className="space-y-12">
                             {processSteps.map((step, index) => (
-                                <div key={index} className="space-y-4">
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-base text-muted-foreground font-mono">{step.number}</span>
-                                        <h3 className="text-3xl font-bold uppercase text-primary tracking-wider flex-grow">{step.title}</h3>
-                                        <DecorativeIcon />
-                                    </div>
-                                    <div className="pl-[6.5rem]">
-                                        <p className="text-lg text-muted-foreground leading-relaxed mb-4">{step.description}</p>
-                                        <ul className="space-y-2">
-                                            {step.bullets.map((bullet, i) => (
-                                                <li key={i} className="flex items-start">
-                                                    <span className="text-muted-foreground/50 mr-3 mt-1.5">&#x25CF;</span>
-                                                    <span className="text-lg text-white flex-1">{bullet}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
+                                <ProcessStep key={index} step={step} />
                             ))}
                         </div>
                     </div>
                     <div className="md:col-span-2 hidden md:block">
                         <div className="sticky top-28">
-                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+                           <AnimatedSection>
+                             <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
                                 {image && (
                                     <Image
                                         src={image.imageUrl}
@@ -124,7 +143,8 @@ export function ServicesSection() {
                                         data-ai-hint={image.imageHint}
                                     />
                                 )}
-                            </div>
+                             </div>
+                           </AnimatedSection>
                         </div>
                     </div>
                 </div>
