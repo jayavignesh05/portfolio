@@ -45,8 +45,8 @@ const AnimatedContent = ({
       scrollTrigger: {
         trigger: el,
         start: `top ${startPct}%`,
-        toggleActions: 'play none none none',
-        once: true
+        toggleActions: 'play none none reverse',
+        once: false
       }
     });
 
