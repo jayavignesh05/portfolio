@@ -113,7 +113,7 @@ export function ProjectsSection() {
                 
                 <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
                     <div
-                        className="sticky top-28 h-screen overflow-hidden"
+                        className="sticky top-24 h-screen overflow-hidden"
                         style={{ perspective: '1000px' }}
                     >
                         {projects.map((project, index) => (
