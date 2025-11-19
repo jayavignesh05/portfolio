@@ -93,6 +93,13 @@
   section {
     @apply w-full py-16 sm:py-20 md:py-24 bg-transparent;
   }
+  .projects-tech-stack-bg {
+    background-image: url('/assets/project.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+  }
 }
 
 @layer utilities {

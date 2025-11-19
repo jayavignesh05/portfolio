@@ -68,7 +68,7 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
             className="absolute top-0 left-0 w-full h-full"
         >
             <div className="flex h-full w-full items-center justify-center">
-                <div className="group relative w-full max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden bg-card border border-border/50">
+                <div className="group relative w-full max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden bg-card/80 backdrop-blur-sm border border-border/50">
                     {image && (
                         <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
                     )}
@@ -104,7 +104,7 @@ export function ProjectsSection() {
     return (
         <section 
             id="projects" 
-            className="relative"
+            className="relative bg-transparent"
         >
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
                 <div className="text-center mb-12">

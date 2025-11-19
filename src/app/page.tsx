@@ -19,8 +19,12 @@ export default function Home() {
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
       <div className="bg-background">
         <AboutSection />
+      </div>
+      <div className="projects-tech-stack-bg">
         <ProjectsSection />
         <TechStack />
+      </div>
+      <div className="bg-background">
         <ContactSection />
       </div>
     </>
