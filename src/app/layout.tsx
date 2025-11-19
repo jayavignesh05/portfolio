@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google'; // <-- Puthusa import panrom
 import './globals.css';
@@ -24,9 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     // Inga antha 'inter.className'-a serthu, font-a apply panrom
-    <html lang="en" className={`${inter.className} dark`}>
+    <html lang="en" className={`${inter.className} dark`} suppressHydrationWarning>
       {/* <head> tag ippo thevai illa */}
-      <body className={cn("font-body antialiased", "content-blur")}>
+      <body className={cn("font-body antialiased", "content-blur")} suppressHydrationWarning>
         <Header />
         <main>{children}</main>
         <Footer />
