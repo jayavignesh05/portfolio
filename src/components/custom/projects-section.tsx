@@ -73,13 +73,10 @@ function ProjectCard({ project, index, scrollYProgress, totalProjects }: { proje
                         <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-8 text-white w-full">
+                    <div className="absolute bottom-0 left-0 p-8 text-left text-white w-full">
                         <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
                         <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
                         <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
-                        <Button asChild variant="link" className="text-white p-0 mt-4 h-auto font-semibold">
-                            <Link href="#">View Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                        </Button>
                     </div>
                 </div>
             </div>
@@ -108,7 +105,7 @@ export function ProjectsSection() {
         >
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
                 <div className="text-center mb-12">
-                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black">
+                     <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">
                         <BlurText text="Featured Projects" animateBy="words" delay={50}/>
                     </h2>
                     <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A selection of my work that showcases my skills and creativity.</p>
