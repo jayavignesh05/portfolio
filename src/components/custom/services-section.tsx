@@ -57,10 +57,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode, c
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView(true);
-                    observer.disconnect();
-                }
+                setInView(entry.isIntersecting);
             },
             {
                 threshold: 0.1,
