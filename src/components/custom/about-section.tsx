@@ -38,10 +38,7 @@ export function AboutSection() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView(true);
-                    observer.disconnect();
-                }
+                setInView(entry.isIntersecting);
             },
             {
                 threshold: 0.1,
