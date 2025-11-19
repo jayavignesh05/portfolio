@@ -17,14 +17,13 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
-      <div className="bg-background">
-        <AboutSection />
-      </div>
+
       <div className="projects-tech-stack-bg">
         <ProjectsSection />
-        <TechStack />
-      </div>
+        <AboutSection />
+       </div>
       <div className="bg-background">
+        <TechStack />
         <ContactSection />
       </div>
     </>
