@@ -20,10 +20,11 @@ export default function Home() {
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
       <AboutSection />
       <ProjectsSection />
-      <TechStack />
       <div className="bg-background">
-        <ContactSection />
+      <TechStack />
       </div>
+      <ContactSection />
+      
     </>
   );
 }
