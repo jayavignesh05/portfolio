@@ -86,9 +86,6 @@ export function HeroSection() {
             hidden: { opacity: 0 },
           }}
         >
-            <Button asChild variant="link" className="text-primary p-0 mt-8 h-auto font-semibold text-lg">
-                <Link href="#contact">Contact Me<ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
         </motion.div>
       </motion.div>
     </section>

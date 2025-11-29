@@ -136,6 +136,7 @@ export function ServicesSection() {
                                         src={image.imageUrl}
                                         alt={image.description}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
                                         className="object-cover"
                                         data-ai-hint={image.imageHint}
                                     />
