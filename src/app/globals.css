@@ -84,7 +84,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('/assets/black.jpg');
+    background-image: url('/assets/black.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
