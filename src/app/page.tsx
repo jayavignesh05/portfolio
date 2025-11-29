@@ -20,7 +20,14 @@ export default function Home() {
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
       <AboutSection />
       <ProjectsSection />
-      <TechStack />
+      <div style={{ 
+        backgroundImage: "url('/assets/project.webp')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}>
+        <TechStack />
+      </div>
       <ContactSection />
       
     </>
