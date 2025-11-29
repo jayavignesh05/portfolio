@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
@@ -18,12 +18,16 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
 
-  const menuLinks = [
+  const menuLinks = useMemo(() => [
     { name: "Home", href: "#home" },
     { name: "Process", href: "#services" },
     { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
-  ];
+  ], []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -41,16 +45,17 @@ export function Header() {
         currentSection = "#home";
       }
 
-      if (currentSection && currentSection !== activeLink) {
+      if (currentSection) {
         setActiveLink(currentSection);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [activeLink, menuLinks]);
+  }, [menuLinks]);
 
   return (
     <header
@@ -58,7 +63,10 @@ export function Header() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
       )}
     >
-      <div
+      <motion.div
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
           "mx-auto mt-4 flex items-center justify-between transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5",
           isMobile
@@ -140,7 +148,7 @@ export function Header() {
             </motion.div>
           </>
         )}
-      </div>
+      </motion.div>
     </header>
   );
 }
