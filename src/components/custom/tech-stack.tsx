@@ -18,11 +18,11 @@ const techLogos = [
 
 export function TechStack() {
   return ( 
-    <section className="py-12 ">
+    <section className="h-[500px] flex flex-col justify-center items-center ">
         <div className="container mx-auto px-4 text-center">
             <div className="flex flex-col items-center text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black">Tools & Technologies</h2>
-                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto text-black">A look at the modern tools I use to build digital experiences.</p>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Tools & Technologies</h2>
+                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto text-white">A look at the modern tools I use to build digital experiences.</p>
             </div>
         </div>
         <LogoLoop
@@ -35,7 +35,7 @@ export function TechStack() {
             scaleOnHover
             fadeOut={false}
             ariaLabel="Technology partners"
-            className='text-black'
+            className='text-white'
         />
     </section>
   );

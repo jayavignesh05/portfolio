@@ -24,7 +24,6 @@ export default function Home() {
         backgroundImage: "url('/assets/project.webp')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
       }}>
         <TechStack />
       </div>
