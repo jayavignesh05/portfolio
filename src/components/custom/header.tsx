@@ -20,6 +20,7 @@ export function Header() {
     { name: "Process", href: "#services" },
     { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
+    { name:"contact",href:"#contact"},
   ], []);
 
   useEffect(() => {
@@ -65,10 +66,10 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "mx-auto mt-4 flex items-center justify-between transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5",
+          "mx-auto mt-4 flex items-center transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5",
           isMobile
             ? "max-w-xs rounded-full h-14 px-4 justify-end"
-            : "max-w-3xl rounded-full h-16 px-5 md:px-6"
+            : "max-w-md rounded-full h-16 px-5 md:px-6"
         )}
       >
         {isMobile ? (
@@ -104,7 +105,7 @@ export function Header() {
           </>
         ) : (
           <>
-            <nav className="relative flex items-center gap-1">
+            <nav className="relative flex items-center gap-1 ">
               {menuLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -125,13 +126,6 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            <motion.div whileHover={{ y: -4, rotate: -2 }}>
-              <Button asChild className="font-bold text-sm rounded-full" size="default">
-                <Link href="#contact">
-                  <span>Contact</span>
-                </Link>
-              </Button>
-            </motion.div>
           </>
         )}
       </motion.div>
