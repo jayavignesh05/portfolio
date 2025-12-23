@@ -63,7 +63,7 @@ export function Header() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
           "mx-auto mt-4 flex items-center justify-center transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5 rounded-full",
-          "w-auto", // Auto width
+          "w-[90%] max-w-sm md:max-w-md", // Responsive width
           "h-14 md:h-16", // Responsive height
           "px-2" // Base padding
         )}
