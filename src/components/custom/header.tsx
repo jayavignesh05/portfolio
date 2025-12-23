@@ -5,16 +5,17 @@ import { useState, useEffect, useMemo } from 'react';
 import Link from "next/link";
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { Home, Workflow, User, FolderKanban, Mail } from 'lucide-react';
 
 export function Header() {
   const [activeLink, setActiveLink] = useState("#home");
 
   const menuLinks = useMemo(() => [
-    { name: "Home", href: "#home" },
-    { name: "Process", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", icon: <Home className="h-5 w-5" /> },
+    { name: "Process", href: "#services", icon: <Workflow className="h-5 w-5" /> },
+    { name: "About", href: "#about", icon: <User className="h-5 w-5" /> },
+    { name: "Work", href: "#projects", icon: <FolderKanban className="h-5 w-5" /> },
+    { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5" /> },
   ], []);
 
   useEffect(() => {
@@ -62,24 +63,28 @@ export function Header() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
           "mx-auto mt-4 flex items-center justify-center transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5 rounded-full",
-          "w-[90%] max-w-sm md:max-w-md", // Responsive width
+          "w-auto", // Auto width
           "h-14 md:h-16", // Responsive height
-          "px-2 md:px-5" // Responsive padding
+          "px-2" // Base padding
         )}
       >
-        <nav className="relative flex items-center gap-0 md:gap-1">
+        <nav className="relative flex items-center justify-center gap-1">
           {menuLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "relative transition-colors font-semibold rounded-full",
-                "text-xs px-3 py-2", // Smaller text and padding on mobile
-                "md:text-sm md:px-4", // Larger text and padding on desktop
+                "relative transition-colors font-semibold rounded-full flex items-center justify-center",
+                // Mobile and tablet size for icon
+                "h-10 w-10 p-0", 
+                // Desktop size with padding for text
+                "md:h-auto md:w-auto md:px-4 md:py-2",
                 activeLink === link.href ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
               )}
+              aria-label={link.name}
             >
-              {link.name}
+              <span className="md:hidden">{link.icon}</span>
+              <span className="hidden md:inline text-sm">{link.name}</span>
               {activeLink === link.href && (
                 <motion.div
                   layoutId="active-nav-link"
