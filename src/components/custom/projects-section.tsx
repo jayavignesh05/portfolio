@@ -4,12 +4,10 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import BlurText from "./blur-text";
+import { cn } from "@/lib/utils";
 
 const projects = [
     {
@@ -42,90 +40,84 @@ const projects = [
     },
 ];
 
-function ProjectCard({ project, index, scrollYProgress, totalProjects }: { project: any, index: number, scrollYProgress: any, totalProjects: number }) {
+function AnimatedProjectCard({ project, index }: { project: any, index: number }) {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.2 });
     const image = PlaceHolderImages.find(p => p.id === project.imageId);
+    const isOdd = index % 2 !== 0;
 
-    // Stagger the entrance of each card
-    const entranceRangeStart = (index - 1) / totalProjects;
-    const entranceRangeEnd = index / totalProjects;
-    const y = useTransform(scrollYProgress, [entranceRangeStart, entranceRangeEnd], ["100%", "0%"]);
+    const cardVariants = {
+        hidden: { opacity: 0 },
+        visible: { 
+            opacity: 1,
+            transition: { staggerChildren: 0.2, delayChildren: 0.2 }
+        },
+    };
 
-    const exitRangeStart = index / totalProjects;
-    const exitRangeEnd = (index + 0.5) / totalProjects;
-    
-    // Animate rotation and scale on exit
-    const rotateX = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [0, -15]);
-    const scale = useTransform(scrollYProgress, [exitRangeStart, exitRangeEnd], [1, 0.9]);
+    const imageVariants = {
+        hidden: { opacity: 0, x: isOdd ? -100 : 100 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    };
+
+    const detailsVariants = {
+        hidden: { opacity: 0, x: isOdd ? 100 : -100 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    };
 
     return (
         <motion.div
-            style={{
-                y,
-                scale,
-                rotateX,
-                zIndex: index, // Stack cards correctly
-            }}
-            className="absolute top-0 left-0 w-full h-full"
+            ref={ref}
+            variants={cardVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
         >
-            <div className="flex h-full w-full items-center justify-center">
-                <div className="group relative w-full max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden bg-card/80 backdrop-blur-sm border border-border/50">
-                    {image && (
-                        <Image src={image.imageUrl} alt={project.title} fill className="object-cover rounded-xl"/>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <div className="absolute bottom-0 left-0 p-8 text-left text-white w-full">
-                        <Badge variant="secondary" className="mb-2 bg-white/20 text-white border-none">{project.category}</Badge>
-                        <h3 className="text-3xl md:text-4xl font-bold">{project.title}</h3>
-                        <p className="text-white/80 mt-2 line-clamp-2 max-w-2xl">{project.description}</p>
-                    </div>
-                </div>
-            </div>
+            {/* Image Column */}
+            <motion.div variants={imageVariants} className={cn("relative aspect-video rounded-2xl overflow-hidden", { "md:order-2": isOdd })}>
+                {image && (
+                    <Image 
+                        src={image.imageUrl} 
+                        alt={project.title} 
+                        fill 
+                        className="object-cover"
+                        data-ai-hint={image.imageHint}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                )}
+            </motion.div>
+
+            {/* Details Column */}
+            <motion.div variants={detailsVariants} className={cn("space-y-4", { "md:order-1": isOdd })}>
+                 <Badge variant="secondary" className="bg-white/20 text-white border-none">{project.category}</Badge>
+                 <h3 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h3>
+                 <p className="text-white/80 mt-2 text-lg max-w-lg">{project.description}</p>
+            </motion.div>
         </motion.div>
     );
 }
 
 export function ProjectsSection() {
-    const ref = useRef<HTMLDivElement>(null);
-
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"]
-    });
-    
-    const smoothScrollYProgress = useSpring(scrollYProgress, {
-        mass: 0.1,
-        stiffness: 80,
-        damping: 20,
-    });
-
     return (
         <section 
             id="projects" 
             className="relative bg-transparent"
         >
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
-                <div className="text-center mb-12">
+                <div className="text-center mb-16">
                      <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
                         <BlurText text="Featured Projects" animateBy="words" delay={50}/>
                     </h2>
                     <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A selection of my work that showcases my skills and creativity.</p>
                 </div>
                 
-                <div ref={ref} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-                    <div
-                        className="sticky top-10 h-screen overflow-hidden"
-                        style={{ perspective: '1000px' }}
-                    >
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                index={index}
-                                scrollYProgress={smoothScrollYProgress}
-                                totalProjects={projects.length}
-                            />
-                        ))}
-                    </div>
+                <div className="space-y-24 md:space-y-32">
+                    {projects.map((project, index) => (
+                        <AnimatedProjectCard
+                            key={project.id}
+                            project={project}
+                            index={index}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
