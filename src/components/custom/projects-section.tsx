@@ -55,12 +55,12 @@ function AnimatedProjectCard({ project, index }: { project: any, index: number }
     };
 
     const imageVariants = {
-        hidden: { opacity: 0, x: isOdd ? -100 : 100 },
+        hidden: { opacity: 0, x: isOdd ? -50 : 50 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
     };
 
     const detailsVariants = {
-        hidden: { opacity: 0, x: isOdd ? 100 : -100 },
+        hidden: { opacity: 0, x: isOdd ? 50 : -50 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
     };
 
