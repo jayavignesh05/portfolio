@@ -3,16 +3,10 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Header() {
-  const isMobile = useIsMobile();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
 
   const menuLinks = useMemo(() => [
@@ -20,10 +14,11 @@ export function Header() {
     { name: "Process", href: "#services" },
     { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
-    { name:"contact",href:"#contact"},
+    { name: "Contact", href: "#contact" },
   ], []);
 
   useEffect(() => {
+    // On initial load, scroll to the top
     window.scrollTo(0, 0);
   }, []);
   
@@ -49,7 +44,7 @@ export function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    handleScroll(); // Initial check
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -66,68 +61,35 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "mx-auto mt-4 flex items-center transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5",
-          isMobile
-            ? "max-w-xs rounded-full h-14 px-4 justify-end"
-            : "max-w-md rounded-full h-16 px-5 md:px-6"
+          "mx-auto mt-4 flex items-center justify-center transition-all duration-300 ease-in-out bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg shadow-primary/5 rounded-full",
+          "w-[90%] max-w-sm md:max-w-md", // Responsive width
+          "h-14 md:h-16", // Responsive height
+          "px-2 md:px-5" // Responsive padding
         )}
       >
-        {isMobile ? (
-          <>
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="w-8 h-8">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="top" className="w-full">
-                <nav className="flex flex-col items-center gap-6 pt-12">
-                  {menuLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={cn(
-                        "transition-colors font-semibold text-lg",
-                        activeLink === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
-                      )}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                  <Button asChild className="font-bold text-lg rounded-full" size="lg">
-                    <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
-                  </Button>
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </>
-        ) : (
-          <>
-            <nav className="relative flex items-center gap-1 ">
-              {menuLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "relative transition-colors font-semibold text-sm px-4 py-2 rounded-full",
-                    activeLink === link.href ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
-                  )}
-                >
-                  {link.name}
-                  {activeLink === link.href && (
-                    <motion.div
-                      layoutId="active-nav-link"
-                      className="absolute inset-0 bg-primary rounded-full -z-10"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              ))}
-            </nav>
-          </>
-        )}
+        <nav className="relative flex items-center gap-0 md:gap-1">
+          {menuLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "relative transition-colors font-semibold rounded-full",
+                "text-xs px-3 py-2", // Smaller text and padding on mobile
+                "md:text-sm md:px-4", // Larger text and padding on desktop
+                activeLink === link.href ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
+              )}
+            >
+              {link.name}
+              {activeLink === link.href && (
+                <motion.div
+                  layoutId="active-nav-link"
+                  className="absolute inset-0 bg-primary rounded-full -z-10"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
+            </Link>
+          ))}
+        </nav>
       </motion.div>
     </header>
   );
