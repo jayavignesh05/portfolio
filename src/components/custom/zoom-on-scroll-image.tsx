@@ -35,11 +35,11 @@ export function ZoomOnScrollImage({ src, alt }: { src: string; alt: string }) {
       </motion.div>
 
       {/* 2. Text Overlay Content (Positioned Absolute) */}
-      <div className="absolute inset-0 z-10 flex flex-col md:flex-row items-end justify-between p-8 md:p-16 pb-20">
+      <div className="absolute inset-0 z-10 flex flex-col md:flex-row items-center md:items-end justify-between p-8 md:p-16 pb-20">
         
         {/* Left Side: Big Text */}
         <div className="w-full md:w-1/2">
-          <h1 className="text-6xl md:text-8xl font-black text-white/90 uppercase leading-[0.9] tracking-tighter">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white/90 uppercase leading-[0.9] tracking-tighter">
             Let&apos;
             <span className="text-[#b4f82a]">work</span><br/>
             <span className="text-white">Together</span>

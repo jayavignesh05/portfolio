@@ -92,7 +92,7 @@ function ProcessStep({ step }: { step: (typeof processSteps)[0] }) {
                     <h3 className="text-3xl font-bold uppercase text-primary tracking-wider flex-grow">{step.title}</h3>
                     <DecorativeIcon />
                 </div>
-                <div className="pl-[6.5rem]">
+                <div className="pl-0 md:pl-[6.5rem]">
                     <p className="text-lg text-muted-foreground leading-relaxed mb-4">{step.description}</p>
                     <ul className="space-y-2">
                         {step.bullets.map((bullet, i) => (
@@ -115,11 +115,11 @@ export function ServicesSection() {
     return (
         <section id="services" className="min-h-screen w-full py-16 sm:py-20 md:py-24">
             <div className="container mx-auto px-4 h-full">
-                <div className="grid md:grid-cols-5 md:gap-16">
-                    <div className="md:col-span-3 relative">
-                        <AnimatedSection className="text-center mb-16">
+                <div className="grid lg:grid-cols-5 lg:gap-16">
+                    <div className="lg:col-span-3 relative">
+                        <AnimatedSection className="text-center mb-12 md:mb-16">
                             <p className="text-base uppercase text-white mb-2 tracking-widest">[ELEVATE YOUR DESIGN]</p>
-                            <h2 className="text-6xl md:text-7xl font-black uppercase text-primary tracking-tighter">Discover <span className="text-foreground">My</span> Method</h2>
+                            <h2 className="text-5xl md:text-7xl font-black uppercase text-primary tracking-tighter">Discover <span className="text-foreground">My</span> Method</h2>
                         </AnimatedSection>
                         <div className="space-y-12">
                             {processSteps.map((step, index) => (
@@ -127,7 +127,7 @@ export function ServicesSection() {
                             ))}
                         </div>
                     </div>
-                    <div className="md:col-span-2 hidden md:block">
+                    <div className="lg:col-span-2 hidden lg:block">
                         <div className="sticky top-28">
                            <AnimatedSection>
                              <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
@@ -136,7 +136,7 @@ export function ServicesSection() {
                                         src={image.imageUrl}
                                         alt={image.description}
                                         fill
-                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        sizes="(max-width: 1024px) 100vw, 33vw"
                                         className="object-cover"
                                         data-ai-hint={image.imageHint}
                                     />

@@ -58,9 +58,9 @@ export function HeroSection() {
             hidden: { opacity: 0 },
           }}
         >
-            Dedicated to top-notch design, <br /> I am a
+            Dedicated to top-notch design, <br className="sm:hidden" /> I am a
         </motion.p>
-        <h1 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
            <span className="block">
               <BlurText text="UI/UX " animateBy="words" delay={50} />
               <BlurText text="Designer" className="text-primary" animateBy="words" delay={50} />

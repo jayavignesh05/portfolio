@@ -63,10 +63,10 @@ export function AnimatedStat({ stat }: { stat: Stat }) {
 
     return (
         <div ref={ref}>
-            <div className="text-5xl font-black text-primary">
+            <div className="text-4xl sm:text-5xl font-black text-primary">
                 {count}{stat.suffix}
             </div>
-            <div className="text-muted-foreground mt-3 text-base">{stat.label}</div>
+            <div className="text-muted-foreground mt-2 sm:mt-3 text-sm sm:text-base">{stat.label}</div>
         </div>
     );
 }

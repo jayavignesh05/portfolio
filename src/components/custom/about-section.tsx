@@ -38,7 +38,10 @@ export function AboutSection() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setInView(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    setInView(true);
+                    observer.disconnect();
+                }
             },
             {
                 threshold: 0.1,
@@ -63,7 +66,7 @@ export function AboutSection() {
                 <div className="lg:col-span-1">
                     <ProfileCard />
                 </div>
-                <div className="lg:col-span-2 space-y-8 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 shadow-lg">
+                <div className="lg:col-span-2 space-y-8 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-lg">
                     <div>
                         <h2 className="text-3xl font-bold mb-4">About Me</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -71,17 +74,17 @@ export function AboutSection() {
                         </p>
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap gap-2 sm:gap-4">
                         {skills.map((skill) => (
-                            <Badge key={skill} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground font-normal px-4 py-2 text-base rounded-lg">
+                            <Badge key={skill} variant="secondary" className="bg-muted hover:bg-muted/80 text-muted-foreground font-normal px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg">
                                 {skill}
                             </Badge>
                         ))}
                     </div>
                     <Separator className="border-dashed" />
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
                         {stats.map((stat, index) => (
-                            <div key={index} className="bg-card/70 p-6 rounded-lg border border-border/50 text-center">
+                            <div key={index} className="bg-card/70 p-4 sm:p-6 rounded-lg border border-border/50 text-center">
                                 <AnimatedStat stat={stat} />
                             </div>
                         ))}
