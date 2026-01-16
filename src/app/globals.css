@@ -80,10 +80,10 @@
     @apply border-border;
   }
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth overflow-x-hidden;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground w-full overflow-x-hidden;
     background-image: url('/assets/black.webp');
     background-size: cover;
     background-position: center;

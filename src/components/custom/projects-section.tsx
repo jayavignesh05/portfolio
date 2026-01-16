@@ -48,7 +48,7 @@ function AnimatedProjectCard({ project, index }: { project: any, index: number }
 
     const cardVariants = {
         hidden: { opacity: 0 },
-        visible: { 
+        visible: {
             opacity: 1,
             transition: { staggerChildren: 0.2, delayChildren: 0.2 }
         },
@@ -75,10 +75,10 @@ function AnimatedProjectCard({ project, index }: { project: any, index: number }
             {/* Image Column */}
             <motion.div variants={imageVariants} className={cn("relative aspect-video rounded-2xl overflow-hidden", { "md:order-2": isOdd })}>
                 {image && (
-                    <Image 
-                        src={image.imageUrl} 
-                        alt={project.title} 
-                        fill 
+                    <Image
+                        src={image.imageUrl}
+                        alt={project.title}
+                        fill
                         className="object-cover"
                         data-ai-hint={image.imageHint}
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -88,9 +88,9 @@ function AnimatedProjectCard({ project, index }: { project: any, index: number }
 
             {/* Details Column */}
             <motion.div variants={detailsVariants} className={cn("space-y-4", { "md:order-1": isOdd })}>
-                 <Badge variant="secondary" className="bg-white/20 text-white border-none">{project.category}</Badge>
-                 <h3 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h3>
-                 <p className="text-white/80 mt-2 text-lg max-w-lg">{project.description}</p>
+                <Badge variant="secondary" className="bg-white/20 text-white border-none">{project.category}</Badge>
+                <h3 className="text-3xl md:text-4xl font-bold text-white break-words max-w-full">{project.title}</h3>
+                <p className="text-white/80 mt-2 text-lg max-w-full break-words">{project.description}</p>
             </motion.div>
         </motion.div>
     );
@@ -98,18 +98,18 @@ function AnimatedProjectCard({ project, index }: { project: any, index: number }
 
 export function ProjectsSection() {
     return (
-        <section 
-            id="projects" 
+        <section
+            id="projects"
             className="relative bg-transparent"
         >
             <div className="container mx-auto px-4 py-16 sm:py-20 md:py-24 relative z-10">
                 <div className="text-center mb-12 md:mb-16">
-                     <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
-                        <BlurText text="Featured Projects" animateBy="words" delay={50}/>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground">
+                        <BlurText text="Featured Projects" animateBy="words" delay={50} />
                     </h2>
                     <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A selection of my work that showcases my skills and creativity.</p>
                 </div>
-                
+
                 <div className="space-y-16 md:space-y-32">
                     {projects.map((project, index) => (
                         <AnimatedProjectCard
