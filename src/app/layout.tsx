@@ -35,7 +35,7 @@ export default function RootLayout({
       {/* <head> tag ippo thevai illa */}
       <body className={cn("font-body antialiased", "content-blur")} suppressHydrationWarning>
         <Header />
-        <main>{children}</main>
+        <main className="relative w-full max-w-[100vw] overflow-x-hidden">{children}</main>
         <Footer />
         <Toaster />
       </body>

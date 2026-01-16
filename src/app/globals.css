@@ -79,17 +79,20 @@
   * {
     @apply border-border;
   }
+
   html {
     @apply scroll-smooth overflow-x-hidden;
   }
+
   body {
-    @apply bg-background text-foreground w-full overflow-x-hidden;
+    @apply bg-background text-foreground w-full max-w-[100vw] overflow-x-hidden;
     background-image: url('/assets/black.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
   }
+
   section {
     @apply w-full py-16 sm:py-20 md:py-24 bg-transparent;
   }
@@ -99,21 +102,21 @@
   .transform-style-3d {
     transform-style: preserve-3d;
   }
-  
+
   .content-blur {
     @apply relative;
   }
-  
+
   .content-blur::before,
   .content-blur::after {
     content: "";
     @apply fixed left-0 w-full h-28 z-40 pointer-events-none;
   }
-  
+
   .content-blur::before {
     @apply top-0 bg-gradient-to-b from-transparent to-transparent;
   }
-  
+
   .content-blur::after {
     @apply bottom-0 bg-gradient-to-t from-transparent to-transparent;
   }

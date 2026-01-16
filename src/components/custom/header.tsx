@@ -22,7 +22,7 @@ export function Header() {
     // On initial load, scroll to the top
     window.scrollTo(0, 0);
   }, []);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       let currentSection = "";
@@ -31,10 +31,10 @@ export function Header() {
         const section = document.querySelector(link.href) as HTMLElement;
         if (section && window.scrollY >= section.offsetTop - 150) {
           currentSection = link.href;
-          break; 
+          break;
         }
       }
-      
+
       if (currentSection === "" && window.scrollY < 200) {
         currentSection = "#home";
       }
@@ -54,7 +54,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out w-full max-w-[100vw]"
       )}
     >
       <motion.div
@@ -76,7 +76,7 @@ export function Header() {
               className={cn(
                 "relative transition-colors font-semibold rounded-full flex items-center justify-center",
                 // Mobile and tablet size for icon
-                "h-10 w-10 p-0", 
+                "h-10 w-10 p-0",
                 // Desktop size with padding for text
                 "md:h-auto md:w-auto md:px-4 md:py-2",
                 activeLink === link.href ? "text-primary-foreground" : "text-foreground/80 hover:text-primary"
