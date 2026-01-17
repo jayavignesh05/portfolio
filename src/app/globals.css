@@ -81,11 +81,13 @@
   }
 
   html {
-    @apply scroll-smooth overflow-x-hidden;
+    @apply scroll-smooth;
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-background text-foreground w-full max-w-[100vw] overflow-x-hidden;
+    @apply bg-background text-foreground w-full max-w-[100vw];
+    overflow-x: clip;
     background-image: url('/assets/black.webp');
     background-size: cover;
     background-position: center;

@@ -1,6 +1,18 @@
 {
   "placeholderImages": [
     {
+      "id": "project-have-clothing",
+      "description": "Showcase image for HAVE Clothing Brand",
+      "imageUrl": "/assets/have.jpeg",
+      "imageHint": "clothing brand website"
+    },
+    {
+      "id": "project-lms",
+      "description": "Showcase image for LMS Student Learning",
+      "imageUrl": "/assets/LMS.jpeg",
+      "imageHint": "learning management system"
+    },
+    {
       "id": "developer-photo",
       "description": "A pensive man sitting in a shadow-lit room",
       "imageUrl": "/assets/vikiimage.png",

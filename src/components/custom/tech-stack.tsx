@@ -17,26 +17,26 @@ const techLogos = [
 
 
 export function TechStack() {
-  return ( 
+  return (
     <section className="h-[400px] sm:h-[500px] flex flex-col justify-center items-center ">
-        <div className="container mx-auto px-4 text-center">
-            <div className="flex flex-col items-center text-center mb-12">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Tools & Technologies</h2>
-                <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto text-white">A look at the modern tools I use to build digital experiences.</p>
-            </div>
+      <div className="container mx-auto px-4 text-center">
+        <div className="flex flex-col items-center text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Tools & Technologies</h2>
+          <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">A look at the modern tools I use to build digital experiences.</p>
         </div>
-        <LogoLoop
-            logos={techLogos}
-            speed={100}
-            direction="left"
-            logoHeight={40}
-            gap={60}
-            pauseOnHover
-            scaleOnHover
-            fadeOut={false}
-            ariaLabel="Technology partners"
-            className='text-white'
-        />
+      </div>
+      <LogoLoop
+        logos={techLogos}
+        speed={100}
+        direction="left"
+        logoHeight={40}
+        gap={60}
+        pauseOnHover
+        scaleOnHover
+        fadeOut={false}
+        ariaLabel="Technology partners"
+        className='text-foreground'
+      />
     </section>
   );
 }

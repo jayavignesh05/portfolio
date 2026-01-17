@@ -20,13 +20,7 @@ export default function Home() {
       <ZoomOnScrollImage src="/assets/hands.avif" alt="Hands typing on a laptop" />
       <AboutSection />
       <ProjectsSection />
-      <div className="w-full overflow-hidden" style={{
-        backgroundImage: "url('/assets/project.webp')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
-        <TechStack />
-      </div>
+      <TechStack />
       <ContactSection />
 
     </>
