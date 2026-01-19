@@ -16,33 +16,33 @@ export function HeroSection() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry.isIntersecting) {
-                setIsMounted(true);
-                controls.start("visible");
-                observer.disconnect();
-            }
-        },
-        {
-            threshold: 0.1,
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsMounted(true);
+          controls.start("visible");
+          observer.disconnect();
         }
+      },
+      {
+        threshold: 0.1,
+      }
     );
-    
+
     const currentRef = ref.current;
     if (currentRef) {
-        observer.observe(currentRef);
+      observer.observe(currentRef);
     }
 
     return () => {
-        if (currentRef) {
-            observer.unobserve(currentRef);
-        }
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
     };
   }, [controls]);
 
   return (
     <section id="home" ref={ref} className="container mx-auto px-4 min-h-screen flex items-center justify-center">
-      <motion.div 
+      <motion.div
         className="w-full text-left sm:text-center"
         initial="hidden"
         animate={controls}
@@ -51,27 +51,27 @@ export function HeroSection() {
           hidden: { opacity: 0, y: 20 },
         }}
       >
-        <motion.p 
+        <motion.p
           className="text-lg text-muted-foreground"
           variants={{
             visible: { opacity: 1, transition: { delay: 0.1 } },
             hidden: { opacity: 0 },
           }}
         >
-            Dedicated to top-notch design, <br className="sm:hidden" /> I am a
+          Dedicated to top-notch design, <br className="sm:hidden" /> I am a
         </motion.p>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
-           <span className="block">
-              <BlurText text="UI/UX " animateBy="words" delay={50} />
-              <BlurText text="Designer" className="text-primary" animateBy="words" delay={50} />
-              <BlurText text=" &" animateBy="words" delay={50} />
-           </span>
-           <span className="block">
-              <BlurText text="Frontend " animateBy="words" delay={50} />
-              <BlurText text="Developer" className="text-primary" animateBy="words" delay={50} />
-            </span>
+        <h1 className="max-w-full break-words text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-foreground tracking-tighter mt-5 overflow-hidden">
+          <span className="block">
+            <BlurText text="UI/UX " animateBy="words" delay={50} />
+            <BlurText text="Designer" className="text-primary" animateBy="words" delay={50} />
+            <BlurText text=" &" animateBy="words" delay={50} />
+          </span>
+          <span className="block">
+            <BlurText text="Frontend " animateBy="words" delay={50} />
+            <BlurText text="Developer" className="text-primary" animateBy="words" delay={50} />
+          </span>
         </h1>
-        <motion.p 
+        <motion.p
           className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto"
           variants={{
             visible: { opacity: 1, transition: { delay: 1.2 } },
@@ -81,7 +81,7 @@ export function HeroSection() {
           with a multidisciplinary approach for start-ups and small brand-conscious companies.
         </motion.p>
         <motion.div
-           variants={{
+          variants={{
             visible: { opacity: 1, transition: { delay: 1.4 } },
             hidden: { opacity: 0 },
           }}

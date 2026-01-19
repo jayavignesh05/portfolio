@@ -1,5 +1,5 @@
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google'; // <-- Puthusa import panrom
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -8,7 +8,7 @@ import { Footer } from "@/components/custom/footer";
 import { cn } from '@/lib/utils';
 
 // Font-a inga configure panrom
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter', // CSS variable-ah kooda use pannalam
 });
@@ -16,6 +16,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'JV-portfolio',
   description: 'Personal portfolio for a Frontend Developer & UI/UX Designer.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: 'black',
 };
 
 export default function RootLayout({
@@ -29,7 +35,7 @@ export default function RootLayout({
       {/* <head> tag ippo thevai illa */}
       <body className={cn("font-body antialiased", "content-blur")} suppressHydrationWarning>
         <Header />
-        <main>{children}</main>
+        <main className="relative w-full max-w-[100vw] [overflow-x:clip]">{children}</main>
         <Footer />
         <Toaster />
       </body>

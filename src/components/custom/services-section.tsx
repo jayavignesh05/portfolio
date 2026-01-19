@@ -7,46 +7,46 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { cn } from "@/lib/utils";
 
 const processSteps = [
-  {
-    number: "[ 01 ]",
-    title: "PLANNING",
-    description: "We kick things off by diving deep into your vision. In this phase, we'll align on goals, define the scope, and create a strategic plan to ensure your project's success from the start.",
-    bullets: [
-      "Initial consultation and discovery session",
-      "Goal setting and KPI definition",
-      "User persona and journey mapping",
-      "Competitive analysis and market research",
-    ],
-  },
-  {
-    number: "[ 02 ]",
-    title: "DESIGN",
-    description: "Next, I'll translate our strategy into a stunning and intuitive user interface. This is where creativity meets usability to craft an experience that captivates and converts.",
-    bullets: [
-      "Wireframing and prototyping",
-      "High-fidelity UI/UX design",
-      "Brand identity integration",
-      "Interactive design mockups",
-    ],
-  },
-  {
-    number: "[ 03 ]",
-    title: "DEVELOPMENT",
-    description: "With the designs approved, I'll bring them to life with clean, efficient code. I focus on building a responsive, performant, and scalable product ready for the modern web.",
-    bullets: [
-      "Front-end development with React/Next.js",
-      "Responsive and mobile-first implementation",
-      "Performance optimization",
-      "CMS integration and setup",
-    ],
-  },
+    {
+        number: "[ 01 ]",
+        title: "PLANNING",
+        description: "We kick things off by diving deep into your vision. In this phase, we'll align on goals, define the scope, and create a strategic plan to ensure your project's success from the start.",
+        bullets: [
+            "Initial consultation and discovery session",
+            "Goal setting and KPI definition",
+            "User persona and journey mapping",
+            "Competitive analysis and market research",
+        ],
+    },
+    {
+        number: "[ 02 ]",
+        title: "DESIGN",
+        description: "Next, I'll translate our strategy into a stunning and intuitive user interface. This is where creativity meets usability to craft an experience that captivates and converts.",
+        bullets: [
+            "Wireframing and prototyping",
+            "High-fidelity UI/UX design",
+            "Brand identity integration",
+            "Interactive design mockups",
+        ],
+    },
+    {
+        number: "[ 03 ]",
+        title: "DEVELOPMENT",
+        description: "With the designs approved, I'll bring them to life with clean, efficient code. I focus on building a responsive, performant, and scalable product ready for the modern web.",
+        bullets: [
+            "Front-end development with React/Next.js",
+            "Responsive and mobile-first implementation",
+            "Performance optimization",
+            "CMS integration and setup",
+        ],
+    },
 ];
 
 const DecorativeIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground/50">
-        <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M12 2V22" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-        <path d="M2 12L22 12" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M12 2V22" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M2 12L22 12" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
     </svg>
 )
 
@@ -127,10 +127,9 @@ export function ServicesSection() {
                             ))}
                         </div>
                     </div>
-                    <div className="lg:col-span-2 hidden lg:block">
+                    <div className="lg:col-span-2 hidden lg:block h-full">
                         <div className="sticky top-28">
-                           <AnimatedSection>
-                             <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+                            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
                                 {image && (
                                     <Image
                                         src={image.imageUrl}
@@ -141,8 +140,7 @@ export function ServicesSection() {
                                         data-ai-hint={image.imageHint}
                                     />
                                 )}
-                             </div>
-                           </AnimatedSection>
+                            </div>
                         </div>
                     </div>
                 </div>
