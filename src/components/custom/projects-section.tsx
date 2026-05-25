@@ -28,12 +28,12 @@ const projects = [
         link: "https://students-learning-web.vercel.app/"
     },
     {
-        id: "project-summer-festival",
-        title: "Summer Vibes Festival Campaign",
-        category: "Graphic Design",
-        description: "Created promotional materials for the 'Summer Vibes Festival,' including posters, flyers, and social media graphics.",
-        imageId: "project-summer-festival",
-        link: null
+        id: "project-v1gamingcafe",
+        title: "V1gamingcafe",
+        category: "Web Development",
+        description: "A premium, fully responsive website designed and developed for V1gamingcafe. Features interactive sections highlighting high-end gaming setups, consoles, tournaments, and membership details.",
+        imageId: "project-v1gamingcafe",
+        link: "https://v1gamingcafe.com/"
     },
     {
         id: "project-coral-spiral",

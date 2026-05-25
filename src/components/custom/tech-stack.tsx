@@ -2,7 +2,7 @@
 "use client";
 
 import { LogoLoop } from './logo-loop';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFigma, SiJavascript, SiHtml5, SiCss3 } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFigma, SiJavascript, SiHtml5, SiCss } from 'react-icons/si';
 
 const techLogos = [
   { node: <SiReact className="h-8 w-8 sm:h-10 sm:w-10" />, title: "React", href: "https://react.dev" },
@@ -12,7 +12,7 @@ const techLogos = [
   { node: <SiFigma className="h-8 w-8 sm:h-10 sm:w-10" />, title: "Figma", href: "https://figma.com" },
   { node: <SiJavascript className="h-8 w-8 sm:h-10 sm:w-10" />, title: "JavaScript", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
   { node: <SiHtml5 className="h-8 w-8 sm:h-10 sm:w-10" />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" },
-  { node: <SiCss3 className="h-8 w-8 sm:h-10 sm:w-10" />, title: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+  { node: <SiCss className="h-8 w-8 sm:h-10 sm:w-10" />, title: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
 ];
 
 
